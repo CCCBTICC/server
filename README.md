@@ -1,5 +1,8 @@
-# server
+# nond.js server
 using port 8080
+
+# mongoDB
+use interviewDB
 
 # API
  -METHOD -URL
