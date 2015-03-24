@@ -9,10 +9,8 @@ var objectId = mongojs.ObjectId;
 /* GET home page. */
 router.get('/list', function (req, res, next) {
     req.db.collection('questions').find({}, {description: 1, tags: 1}, function (err, docs) {
-        console.log(docs);
+        res.send(JSON.stringify(docs));
     });
-    res.status(200);
-    res.send();
 });
 
 router.post('/', function (req, res) {
