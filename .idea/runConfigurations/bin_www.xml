@@ -4,6 +4,8 @@
       <env name="DEBUG" value="InterviewAidServer" />
     </envs>
     <browser url="http://localhost:3000/" />
+    <RunnerSettings RunnerId="Basic" />
+    <ConfigurationWrapper RunnerId="Basic" />
     <method />
   </configuration>
 </component>
