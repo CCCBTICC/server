@@ -4,7 +4,6 @@
 var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
-var objectId = mongojs.ObjectId;
 
 /* GET home page. */
 router.get('/list', function (req, res, next) {
