@@ -11,3 +11,4 @@ router.get('/list', function (req, res, next) {
         res.send(JSON.stringify(docs));
     });
 });
+module.exports = router;
