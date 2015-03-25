@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="interviewAid">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+
+    <!-- Bootstrap css file -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/">InterviewAid</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#/">Home <span class="sr-only">(current)</span></a></li>
+                <li><a href="#/questions/list">Problems</a></li>
+                <li><a href="#/dicuss">Discuss</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <form class="navbar-form navbar-left" role="search">
+                        <button type="button" class="btn btn-primary">Sign In</button>
+                        <button type="button" class="btn btn-success">Sign Up</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-1 col-sm-2 col-md-2"></div>
+        <div class="col-xs-8 col-sm-6 col-md-6">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+            </div>
+            <!-- /input-group -->
+        </div>
+        <div class="col-xs-1 col-sm-2 col-md-2">
+            <a href="#/ask"><button class="btn btn-primary" type="button">Ask A Question</button></a>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-view></div>
+    </div>
+</div>
+
+
+<!-- AngularJS cdn  1.3.14 -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<!-- AngularJS ngRoute cdn 1.3.14 -->
+<script src="http://code.angularjs.org/1.3.14/angular-route.js"></script>
+
+<!-- jQuery cdn  1.11.2 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript   3.3.4  -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+<!-- Customer JavaScript -->
+<script src="javascript/appFactory.js"></script>
+<script src="javascript/askQuestionController.js"></script>
+<script src="javascript/listQuestionController.js"></script>
+<script src="javascript/app.js"></script>
+</body>
+</html>

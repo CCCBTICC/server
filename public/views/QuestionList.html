@@ -1,0 +1,14 @@
+<div class="col-md-2"></div>
+<div class="col-md-8">
+    <h1>QuestionList</h1>
+    <table>
+        <tr>
+            <th>desc</th>
+            <th>tags</th>
+        </tr>
+        <tr ng-repeat="question in questions track by $index">
+            <td>{{question.description}}</td>
+            <td ng-repeat="tag in question.tags track by $index">{{tag}}</td>
+        </tr>
+    </table>
+</div>
