@@ -15,27 +15,33 @@ router.get('/list', function (req, res, next) {
 router.post('/', function (req, res) {
     var action = req.body.action;
     var data = req.body.data;
-
-    console.log(req.body);
     switch (action) {
         case 'create':
-            req.db.collection('questions').insert(data, function (err, docs) {
-                console.log(docs);
-            });
-            res.status(200);
-            res.send();
+            createQuestion(req, res, data);
             break;
         case 'remove':
-            req.db.collection('questions').remove({_id: mongojs.ObjectId(data._id)}, function (err) {
-                if (err == null) {
-                    res.status(200);
-                } else {
-                    res.status(400);
-                }
-                res.send();
-            });
+            removeQuestion(req, res, data);
             break;
     }
 });
+
+function createQuestion(req, res, data) {
+    data.timeStamp = Date.now();
+    req.db.collection('questions').insert(data, function (err, docs) {
+        res.status(200);
+        res.send(docs);
+    });
+}
+
+function removeQuestion(req, res, data) {
+    req.db.collection('questions').remove({_id: mongojs.ObjectId(data._id)}, function (err) {
+        if (err == null) {
+            res.status(200);
+        } else {
+            res.status(400);
+        }
+        res.send();
+    });
+}
 
 module.exports = router;
