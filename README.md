@@ -40,3 +40,27 @@ use interviewDB
       
     response status 200/400 for success/faild.
     
+ -POST -hostURL/answers
+ 
+    require example:
+       {
+           "action": "create",
+           "data": {
+               "questionId": "5510b357fc789da15cd2cf1f"
+           }
+       }
+      
+    response status 200/400 for success/faild.
+    
+ -POST -hostURL/answers
+    require example:
+     {
+         "action": "remove",
+         "data": {
+             "_id": "5511fc25456360f6698e7c51"
+         }
+     }
+      
+    response status 200/400 for success/faild.
+    
+ 
