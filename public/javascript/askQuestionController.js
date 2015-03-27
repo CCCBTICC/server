@@ -6,12 +6,12 @@ var askQuestionController = angular.module('askQuestionController', []);
 
 askQuestionController.controller('AskQuestionCtrl', function ($scope, InterviewQuestion) {
     $scope.submitAQuestion = function () {
-        var question = {};
-        question.action = "create";
-        question.data = {};
-        question.data.description = $scope.desc;
-        question.data.tags = $scope.tgs.split(";");
-        InterviewQuestion.postQuestion(question,function(data, status){
+        var questionAddInfo = {};
+        questionAddInfo.action = "create";
+        questionAddInfo.data = {};
+        questionAddInfo.data.description = $scope.desc;
+        questionAddInfo.data.tags = $scope.tgs.split(";");
+        InterviewQuestion.postQuestion(questionAddInfo,function(data, status){
             console.log("data-->" + data + "\nstatus" + status);
         });
 

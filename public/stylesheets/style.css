@@ -1,3 +1,17 @@
+/* for all elements */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
 /* overwrite bootstrap class*/
 .btn {
     border-radius: 1px;
@@ -8,7 +22,15 @@
 }
 
 /* Customer style*/
-/* shell page */
+/****************************/
+/*        shell page        */
+/****************************/
+/* nav bar */
+.navbar-extra {
+    border-radius: 0;
+    margin-bottom: 30px;
+}
+
 /* search bar & ask a question button */
 .search-bar {
     padding-bottom: 15px;
@@ -24,10 +46,86 @@
 
 /* footer */
 .featurette-divider {
-    margin: 80px 0px;
+    margin: 80px 0;
 }
 
+/****************************/
 /* ask question detail page */
+/****************************/
 .input-gap {
     padding-bottom: 25px;
+}
+
+/****************************/
+/*    list question page    */
+/****************************/
+.question-main-list {
+    text-align: left;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
+/* nav bar */
+
+.question-navbar-main {
+    width: 100%;
+    padding: 0;
+    clear: both;
+    background: none repeat scroll 0 0 #EAEAEA;
+    border: 1px solid #DDD;
+    border-radius: 1px;
+    float: left;
+    display: block;
+}
+
+.question-navbar-list {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    list-style: outside none none;
+    float: left;
+    display: block;
+}
+
+.question-navbar-list-item {
+    display: block;
+    float: left;
+    margin: 0;
+}
+
+.question-navbar-list-item-link {
+    color: #666 !important;
+    display: block;
+    font-weight: 700;
+    padding: 7px 9px;
+    -moz-transition: all ease-in-out 0.5s;
+    -webkit-transition: all ease-in-out 0.5s;
+    -o-transition: all ease-in-out 0.5s;
+    -ms-transition: all ease-in-out 0.5s;
+    transition: all ease-in-out 0.5s;
+}
+
+.question-navbar-list-item-link:hover {
+    text-decoration: none;
+    color: #069 !important;
+    transition: all 0.2s ease-in-out 0s;
+}
+
+/* heading */
+.question-list-heading {
+    float: left;
+    width: 100%;
+    color: #444;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0.5em 0 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.1em;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    padding: 14px 25px 5px 0;
+}
+
+.question-list {
+
 }

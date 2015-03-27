@@ -1,14 +1,46 @@
-<div class="col-md-2"></div>
-<div class="col-md-8">
-    <h1>QuestionList</h1>
-    <table>
+<div class="question-main-list">
+    <!-- Question list nav bar -->
+    <div class="question-navbar-main">
+        <ul class="question-navbar-list">
+            <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">All Activity</a> </li>
+            <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Questions</a> </li>
+            <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Unanswered</a> </li>
+            <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Tags</a> </li>
+        </ul>
+    </div>
+    <!-- End of question list nav bar -->
+
+    <!-- Question List heading -->
+    <h1 class="question-list-heading">QuestionList</h1>
+    <!-- End of question list heading -->
+
+    <!-- Question list in div format-->
+    <div class="question-list">
+        <div class="question-list-item" id="{{_id}}" ng-repeat="question in questions track by $index">
+            <div class="question-item-state"></div>
+            <div class="question-item-main"></div>
+        </div>
+    </div>
+    <!-- End of question list in div format -->
+
+    <!-- Question list in table format -->
+    <table class="table table-striped">
         <tr>
-            <th>desc</th>
-            <th>tags</th>
+            <th></th>
+            <th><a href="" ng-click="sortField='$index'; reverse=!reverse">#</a><span class="{{numberSort}}"></span></th>
+            <th>Votes/Ans/Views</th>
+            <th>Description</th>
+            <th>Operations</th>
         </tr>
-        <tr ng-repeat="question in questions track by $index">
-            <td>{{question.description}}</td>
-            <td ng-repeat="tag in question.tags track by $index">{{tag}}</td>
+        <tr ng-repeat="question in questions track by $index | filter:query | orderBy:sortField:reverse">
+            <td></td>
+            <td>{{$index}}</td>
+            <td style="width: 100px">
+                Votes<br>Answers<br>Views
+            </td>
+            <td>{{question.description}}<br><span ng-repeat="tag in question.tags track by $index">{{tag}};</span></td>
+            <td><button class="btn btn-danger" type="button" ng-click="deleteQuestion(question._id)">Delete</button></td>
         </tr>
     </table>
+    <!-- End 0f question list in table format -->
 </div>

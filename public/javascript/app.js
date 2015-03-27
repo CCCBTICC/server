@@ -34,7 +34,6 @@ app.controller('menuCtrl', ['$scope', function($scope) {
 .directive('customMenu', function(){
 	return {
 		restrict: 'E',
-		template:'<ul class="nav navbar-nav"><li ng-repeat="menu in menus"><a href="#/">{{menu}}</a></li></ul>',
-		
+		template:'<ul class="nav navbar-nav"><li ng-repeat="menu in menus"><a href="#/">{{menu}}</a></li></ul>'
 	}
 })
