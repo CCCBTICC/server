@@ -8,6 +8,9 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
+    <!-- Customer style -->
+    <link rel="stylesheet" href="stylesheets/style.css">
+
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -32,11 +35,11 @@
                 <li><a href="#/dicuss">Discuss</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <form class="navbar-form navbar-left" role="search">
-                        <button type="button" class="btn btn-primary">Sign In</button>
-                        <button type="button" class="btn btn-success">Sign Up</button>
-                    </form>
+                <li class="navbar-form">
+                    <button type="button" class="btn btn-primary btn-block">Sign In</button>
+                </li>
+                <li class="navbar-form">
+                    <button type="button" class="btn btn-success btn-block">Sign Up</button>
                 </li>
             </ul>
         </div>
@@ -47,23 +50,38 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-xs-1 col-sm-2 col-md-2"></div>
-        <div class="col-xs-8 col-sm-6 col-md-6">
+        <div class="col-xs-8 col-xs-offset-2 col-sm-7 col-sm-offset-1 col-md-7 col-md-offset-1 search-bar">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
+                <input type="text" class="form-control input-lg form-control-search" placeholder="Search for...">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Go!</button>
+                        <button class="btn btn-default btn-lg btn-search" type="button">Go!</button>
                     </span>
             </div>
             <!-- /input-group -->
         </div>
-        <div class="col-xs-1 col-sm-2 col-md-2">
-            <a href="#/ask"><button class="btn btn-primary" type="button">Ask A Question</button></a>
+        <div class="col-xs-8 col-xs-offset-2 col-sm-3 col-sm-offset-0 col-md-3 col-md-offset-0">
+            <a href="#/ask" class="btn btn-primary btn-lg btn-ask-a-question">Ask A Question</a>
         </div>
     </div>
     <div class="row">
-        <div ng-view></div>
+        <div class="col-xs-8 col-xs-offset-2 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1" ng-view></div>
     </div>
+    <hr class="featurette-divider">
+
+    <!--  /END THE FEATURETTES  -->
+    <!-- FOOTER -->
+    <footer>
+        <p class="pull-right">
+            <a href="#">Back to top</a>
+        </p>
+
+        <p>
+            &copy; 2015 Company, Inc. |
+            <a href="#">Privacy</a>
+            |
+            <a href="#">Terms</a>
+        </p>
+    </footer>
 </div>
 
 

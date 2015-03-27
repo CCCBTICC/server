@@ -1,8 +1,33 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/* overwrite bootstrap class*/
+.btn {
+    border-radius: 1px;
 }
 
-a {
-  color: #00B7FF;
+.navbar-form {
+    margin: 8px 0;
+}
+
+/* Customer style*/
+/* shell page */
+/* search bar & ask a question button */
+.search-bar {
+    padding-bottom: 15px;
+}
+
+.form-control-search {
+    border-radius: 1px;
+}
+
+.btn-ask-a-question {
+    width: 100%;
+}
+
+/* footer */
+.featurette-divider {
+    margin: 80px 0px;
+}
+
+/* ask question detail page */
+.input-gap {
+    padding-bottom: 25px;
 }
