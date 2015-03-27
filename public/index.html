@@ -29,11 +29,9 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#/">Home <span class="sr-only">(current)</span></a></li>
-                <li><a href="#/questions/list">Problems</a></li>
-                <li><a href="#/dicuss">Discuss</a></li>
-            </ul>
+            <div ng-controller="menuCtrl"> 
+					<custom-menu></custom-menu>
+				</div>
             <ul class="nav navbar-nav navbar-right">
                 <li class="navbar-form">
                     <button type="button" class="btn btn-primary btn-block">Sign In</button>

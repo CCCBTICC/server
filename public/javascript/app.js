@@ -27,3 +27,14 @@ app.config(function($routeProvider){
             redirectTo: '/'
         });
 });
+
+app.controller('menuCtrl', ['$scope', function($scope) {
+  $scope.menus = ['Home', 'Problems', 'Discuss'];
+}])
+.directive('customMenu', function(){
+	return {
+		restrict: 'E',
+		template:'<ul class="nav navbar-nav"><li ng-repeat="menu in menus"><a href="#/">{{menu}}</a></li></ul>',
+		
+	}
+})
