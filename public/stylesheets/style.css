@@ -71,19 +71,19 @@ li {
     width: 100%;
     padding: 0;
     clear: both;
-    background: none repeat scroll 0 0 #EAEAEA;
-    border: 1px solid #DDD;
     border-radius: 1px;
-    float: left;
     display: block;
 }
 
 .question-navbar-list {
+    width: 100%;
     margin: 0;
     padding: 0;
     font-size: 16px;
     list-style: outside none none;
     float: left;
+    background: none repeat scroll 0 0 #EAEAEA;
+    border: 1px solid #DDD;
     display: block;
 }
 

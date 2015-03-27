@@ -20,9 +20,14 @@ listQuestionController.controller('QuestionListCtrl', function ($scope, Intervie
         questionDeleteInfo.data._id = questionId;
 
         InterviewQuestion.delQuestion(questionDeleteInfo, function (data, status) {
-            if(status==200){
-                var i = $scope.questions.indexOf(questionId);
-                $scope.questions.splice(i, 1);
+            if (status == 200) {
+                var index = 0;
+                for (index; index < $scope.questions.length; index++) {
+                    if ($scope.questions[index]._id === questionId) {
+                        break;
+                    }
+                }
+                $scope.questions.splice(index, 1);
             }
         });
     };
