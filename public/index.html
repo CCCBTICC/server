@@ -13,38 +13,8 @@
 
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-extra">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#/">InterviewAid</a>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <div ng-controller="menuCtrl">
-                <custom-menu></custom-menu>
-            </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="navbar-form">
-                    <button type="button" class="btn btn-primary btn-block">Sign In</button>
-                </li>
-                <li class="navbar-form">
-                    <button type="button" class="btn btn-success btn-block">Sign Up</button>
-                </li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container-fluid -->
-</nav>
+<nav-bar ng-controller="navController"></nav-bar>
 
 <div class="container">
     <div class="row">
@@ -95,6 +65,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 <!-- Customer JavaScript -->
+
+<script src="javascript/CBTINavBar.js"></script>
 <script src="javascript/appFactory.js"></script>
 <script src="javascript/askQuestionController.js"></script>
 <script src="javascript/listQuestionController.js"></script>
