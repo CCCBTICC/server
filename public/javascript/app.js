@@ -6,7 +6,8 @@ var app = angular.module('interviewAid',[
     'ngRoute',
     'interviewAidFactory',
     'askQuestionController',
-    'listQuestionController'
+    'listQuestionController',
+    'CBTINavBar'
 ]);
 
 app.config(function($routeProvider){
@@ -28,12 +29,19 @@ app.config(function($routeProvider){
         });
 });
 
-app.controller('menuCtrl', ['$scope', function($scope) {
-  $scope.menus = ['Home', 'Problems', 'Discuss'];
-}])
-.directive('customMenu', function(){
-	return {
-		restrict: 'E',
-		template:'<ul class="nav navbar-nav"><li ng-repeat="menu in menus"><a href="#/">{{menu}}</a></li></ul>'
-	}
-})
+app.controller('navController',function($scope){
+    $scope.menuItems = [
+        {text:"Home",link:"#/"},
+        {text:"Questions",link:"#/questions/list"}
+    ];
+    $scope.title = {text:"interviewAid",link:"#/"};
+    $scope.buttons = [{
+        text:"Sign in",
+        click:function(){alert("sign in")},
+        type:"btn-primary"
+    },{
+        text:"Sign up",
+        click:function(){alert("sign up")},
+        type:"btn-success"
+    }];
+});
