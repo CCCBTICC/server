@@ -21,7 +21,7 @@ listQuestionController.controller('QuestionListCtrl', function ($scope, Intervie
 
         InterviewQuestion.delQuestion(questionDeleteInfo, function (data, status) {
             if(status==200){
-                var i = $scope.questions.indexOf(questionId);
+                var i = $scope.questions.indexOf(questionId)-1;
                 $scope.questions.splice(i, 1);
             }
         });

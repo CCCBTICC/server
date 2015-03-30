@@ -7,7 +7,15 @@ var mongojs = require('mongojs');
 
 /* GET home page. */
 router.get('/list', function (req, res, next) {
-    req.db.collection('questions').find({}, {description: 1, tags: 1}, function (err, docs) {
+    req.db.collection('questions').find({}, {title:1, description: 1, tags: 1}, function (err, docs) {
+        res.send(JSON.stringify(docs));
+    });
+});
+
+router.get('/', function (req, res, next) {
+    var _id = req.query.id;
+    console.log(_id);
+    req.db.collection('questions').find({_id:mongojs.ObjectId(_id)}, {title:1, description: 1, tags: 1}, function (err, docs) {
         res.send(JSON.stringify(docs));
     });
 });
@@ -26,8 +34,13 @@ router.post('/', function (req, res) {
 });
 
 function createQuestion(req, res, data) {
-    data.timeStamp = Date.now();
-    req.db.collection('questions').insert(data, function (err, docs) {
+    var question = {};
+    question.timeStamp = Date.now();
+    question.title = data.title;
+    question.description = data.description;
+    question.tags = data.tags;
+
+    req.db.collection('questions').insert(question, function (err, docs) {
         res.status(200);
         res.send(docs);
     });

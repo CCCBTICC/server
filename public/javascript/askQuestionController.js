@@ -9,6 +9,7 @@ askQuestionController.controller('AskQuestionCtrl', function ($scope, InterviewQ
         var questionAddInfo = {};
         questionAddInfo.action = "create";
         questionAddInfo.data = {};
+        questionAddInfo.data.title = $scope.title;
         questionAddInfo.data.description = $scope.desc;
         questionAddInfo.data.tags = $scope.tgs.split(";");
         InterviewQuestion.postQuestion(questionAddInfo,function(data, status){

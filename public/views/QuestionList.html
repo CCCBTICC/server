@@ -38,7 +38,7 @@
             <td style="width: 100px">
                 Votes<br>Answers<br>Views
             </td>
-            <td>{{question.description}}<br><span ng-repeat="tag in question.tags track by $index">{{tag}};</span></td>
+            <td>{{question.title}}<br>{{question.description}}<br><span ng-repeat="tag in question.tags track by $index">{{tag}};</span></td>
             <td><button class="btn btn-danger" type="button" ng-click="deleteQuestion(question._id)">Delete</button></td>
         </tr>
     </table>
