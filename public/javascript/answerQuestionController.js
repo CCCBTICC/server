@@ -12,6 +12,7 @@ answerQuestionController.controller('AnswerQuestionCtrl', function ($scope, $rou
         answerAddInfo.action = "create";
         answerAddInfo.data = {};
         answerAddInfo.data.questionId = $routeParams.questionId;
+        answerAddInfo.data.description = $scope.desc;
         InterviewQuestion.postAnswer(answerAddInfo, function (data, status) {
             if (status == 200) {
                 $location.path("/question/" + $routeParams.questionId);

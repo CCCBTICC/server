@@ -26,10 +26,13 @@ router.post('/', function (req, res) {
 });
 
 function createAnswer(req, res, data){
-    data.timeStamp = Date.now();
-    req.db.collection('answers').insert(data, function (err, docs) {
+    var answer={};
+    answer.timeStamp = Date.now();
+    answer.questionId = data.questionId;
+    answer.description = data.description;
+    req.db.collection('answers').insert(answer, function (err, docs) {
         req.db.collection('questions').update(
-            {_id:mongojs.ObjectId(data.questionId)}
+            {_id:mongojs.ObjectId(answer.questionId)}
             ,{$push:{answers:mongojs.ObjectId(docs._id)}}
             ,function(err,docs){
                 console.log(docs);
