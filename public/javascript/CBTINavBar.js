@@ -3,6 +3,11 @@
 angular.module('CBTINavBar',[]).directive('navBar',function(){
     return{
         restrict:'EA',
-        templateUrl:'javascript/CBTINavBarTemplate.html'
+        templateUrl:'javascript/CBTINavBarTemplate.html',
+        link: function(scope){
+            scope.menuOnClick = function(id){
+                $("#"+id).tab("show");
+            }
+        }
     }
 });

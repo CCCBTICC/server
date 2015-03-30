@@ -1,7 +1,7 @@
-<div class="question-main-list">
+<!--<div class="question-index">-->
     <!-- Question list nav bar -->
-    <div class="question-navbar-main">
-        <ul class="question-navbar-list">
+    <div class="collapse navbar-collapse question-navbar-main">
+        <ul class="nav navbar-nav question-navbar-list">
             <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">All Activity</a> </li>
             <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Questions</a> </li>
             <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Unanswered</a> </li>
@@ -11,36 +11,61 @@
     <!-- End of question list nav bar -->
 
     <!-- Question List heading -->
-    <h1 class="question-list-heading">QuestionList</h1>
+    <div class="page-header">
+        <h3>Question index</h3>
+    </div>
     <!-- End of question list heading -->
 
-    <!-- Question list in div format-->
-    <div class="question-list">
-        <div class="question-list-item" id="{{_id}}" ng-repeat="question in questions track by $index">
-            <div class="question-item-state"></div>
-            <div class="question-item-main"></div>
+    <!-- Question list in table format -->
+    <!--<div class="table-responsive">-->
+    <div class="list-group">
+        <div class="list-group-item"
+             ng-repeat="question in questions track by $index | filter:query | orderBy:sortField:reverse">
+            <div class="media">
+                <div class="media-left hidden-xs item-state">
+                    <div class="media-object item-stats">
+                        <div class="col-md-4">Votes</div>
+                        <div class="col-md-4">Answers</div>
+                        <div class="col-md-4">Views</div>
+                    </div>
+                </div>
+                <div class="media-body">
+                    <a href="" ng-click="goToAnswerQuestion(question)"><h4 class="media-heading">{{question.description}}</h4></a>
+
+                    <p>{{question.description}}</p>
+
+                    <div class="btn-toolbar" role="toolbar" aria-label="tags">
+                        <a class="btn btn-info btn-xs" href="#/tags/{{tag}}"
+                           ng-repeat="tag in question.tags track by $index">{{tag}}</a>
+                    </div>
+                </div>
+                <div class="media-right media-middle">
+                    <div class="media-object">
+                        <button class="btn btn-danger" type="button" ng-click="deleteQuestion(question._id)">Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- End of question list in div format -->
-
-    <!-- Question list in table format -->
-    <table class="table table-striped">
-        <tr>
-            <th></th>
-            <th><a href="" ng-click="sortField='$index'; reverse=!reverse">#</a><span class="{{numberSort}}"></span></th>
-            <th>Votes/Ans/Views</th>
-            <th>Description</th>
-            <th>Operations</th>
-        </tr>
-        <tr ng-repeat="question in questions track by $index | filter:query | orderBy:sortField:reverse">
-            <td></td>
-            <td>{{$index}}</td>
-            <td style="width: 100px">
-                Votes<br>Answers<br>Views
-            </td>
-            <td>{{question.description}}<br><span ng-repeat="tag in question.tags track by $index">{{tag}};</span></td>
-            <td><button class="btn btn-danger" type="button" ng-click="deleteQuestion(question._id)">Delete</button></td>
-        </tr>
-    </table>
+        <!--<table class="table">-->
+            <!--<tr>-->
+                <!--<th></th>-->
+                <!--<th><a href="" ng-click="sortField='$index'; reverse=!reverse">#</a><span class="{{numberSort}}"></span></th>-->
+                <!--<th>Votes/Ans/Views</th>-->
+                <!--<th>Description</th>-->
+                <!--<th>Operations</th>-->
+            <!--</tr>-->
+            <!--<tr ng-repeat="question in questions track by $index | filter:query | orderBy:sortField:reverse">-->
+                <!--<td></td>-->
+                <!--<td>{{$index}}</td>-->
+                <!--<td style="width: 100px">-->
+                    <!--Votes<br>Answers<br>Views-->
+                <!--</td>-->
+                <!--<td>{{question.description}}<br><span ng-repeat="tag in question.tags track by $index">{{tag}};</span></td>-->
+                <!--<td><button class="btn btn-danger" type="button" ng-click="deleteQuestion(question._id)">Delete</button></td>-->
+            <!--</tr>-->
+        <!--</table>-->
+    <!--</div>-->
     <!-- End 0f question list in table format -->
-</div>
+<!--</div>-->

@@ -1,4 +1,8 @@
 /* for all elements */
+* {
+    border-radius: 2px;
+}
+
 a {
     text-decoration: none;
 }
@@ -17,8 +21,9 @@ li {
     border-radius: 1px;
 }
 
-.navbar-form {
-    margin: 8px 0;
+.navbar-right li {
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 /* Customer style*/
@@ -40,10 +45,6 @@ li {
     border-radius: 1px;
 }
 
-.btn-ask-a-question {
-    width: 100%;
-}
-
 /* footer */
 .featurette-divider {
     margin: 80px 0;
@@ -59,7 +60,7 @@ li {
 /****************************/
 /*    list question page    */
 /****************************/
-.question-main-list {
+.ng-view-container {
     text-align: left;
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
     display: block;
@@ -81,7 +82,6 @@ li {
     padding: 0;
     font-size: 16px;
     list-style: outside none none;
-    float: left;
     background: none repeat scroll 0 0 #EAEAEA;
     border: 1px solid #DDD;
     display: block;
@@ -89,7 +89,6 @@ li {
 
 .question-navbar-list-item {
     display: block;
-    float: left;
     margin: 0;
 }
 
@@ -111,21 +110,17 @@ li {
     transition: all 0.2s ease-in-out 0s;
 }
 
-/* heading */
-.question-list-heading {
-    float: left;
-    width: 100%;
-    color: #444;
-    font-size: 20px;
-    font-weight: 700;
-    margin: 0.5em 0 25px;
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.1em;
-    border-bottom: 1px solid #ddd;
-    position: relative;
-    padding: 14px 25px 5px 0;
+/* question list */
+.item-state {
+    width: 35%;
 }
 
-.question-list {
-
+/****************************/
+/*   answer question page   */
+/****************************/
+.question-desc-main {
+    font-size: 18px;
+    line-height: 1.5;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: #555;
 }

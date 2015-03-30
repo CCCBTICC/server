@@ -7,6 +7,7 @@ var app = angular.module('interviewAid',[
     'interviewAidFactory',
     'askQuestionController',
     'listQuestionController',
+    'answerQuestionController',
     'CBTINavBar'
 ]);
 
@@ -23,6 +24,10 @@ app.config(function($routeProvider){
         when('/ask',{
             templateUrl: '../views/AskAQuestion.html',
             controller: 'AskQuestionCtrl'
+        }).
+        when('/question/:questionId',{
+            templateUrl: '../views/AnswerQuestion.html',
+            controller: 'AnswerQuestionCtrl'
         }).
         otherwise({
             redirectTo: '/'

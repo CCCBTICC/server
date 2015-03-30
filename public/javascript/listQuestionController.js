@@ -4,7 +4,7 @@
 
 var listQuestionController = angular.module('listQuestionController', []);
 
-listQuestionController.controller('QuestionListCtrl', function ($scope, InterviewQuestion) {
+listQuestionController.controller('QuestionListCtrl', function ($scope, $location, InterviewQuestion) {
     $scope.sortField = '$index';
     $scope.reverse = true;
 
@@ -31,4 +31,9 @@ listQuestionController.controller('QuestionListCtrl', function ($scope, Intervie
             }
         });
     };
+
+    $scope.goToAnswerQuestion = function(questionObj){
+        InterviewQuestion.tempQuestion = questionObj;
+        $location.path("/question/"+questionObj._id);
+    }
 });

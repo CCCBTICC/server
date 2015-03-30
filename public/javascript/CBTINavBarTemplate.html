@@ -15,13 +15,13 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
             <ul class="nav navbar-nav">
-                <li ng-repeat="menu in menuItems">
+                <li id="{{menu.text}}" ng-repeat="menu in menuItems" ng-click="menuOnClick(menu.text)">
                     <a href="{{menu.link}}">{{menu.text}}</a>
                 </li>
             </ul>
             <ul class='nav navbar-nav navbar-right'>
-                <li ng-repeat = "button in buttons" class='navbar-form'>
-                    <button type='button' class='btn {{button.type}} btn-block' ng-click="button.click()">{{button.text}}</button>
+                <li ng-repeat = "button in buttons">
+                    <button type='button' class='btn {{button.type}} btn-block navbar-btn' ng-click="button.click()">{{button.text}}</button>
                 </li>
             </ul>
         </div>
