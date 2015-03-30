@@ -39,29 +39,36 @@
         </div>
     </div>
 </div>
-<div class="alert alert-info" role="alert">Answers</div>
 <div class="row">
-    <from class="form-horizontal">
-        <!-- descriptions -->
-        <div class="from-group">
-            <label for="questionAnswer" class="col-sm-8 sr-only">Answer descriptions</label>
+    <div class="col-xs-12 col-sm-9">
+        <div class="alert alert-info" role="alert">Answers</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-9">
+        <from class="form-horizontal">
+            <!-- descriptions -->
+            <div class="from-group">
+                <label for="questionAnswer" class="col-sm-8 sr-only">Answer descriptions</label>
 
-            <div class="col-sm-12 input-gap">
-                <textarea class="form-control input-lg" id="questionAnswer" rows="8" placeholder="Answer this question"
-                          ng-model="desc"></textarea>
+                <div class="col-sm-12 input-gap">
+                    <textarea class="form-control input-lg" id="questionAnswer" rows="8"
+                              placeholder="Answer this question"
+                              ng-model="desc"></textarea>
+                </div>
             </div>
-        </div>
-        <!-- buttons submit & rest -->
-        <div class="from-group">
-            <div class="col-xs-5 col-xs-offset-0 col-sm-3 col-sm-offset-2">
-                <button class="btn btn-primary btn-lg btn-block" type="button" ng-click="submitAnAnswer()">
-                    Submit
-                </button>
+            <!-- buttons submit & rest -->
+            <div class="from-group">
+                <div class="col-xs-5 col-xs-offset-0 col-sm-3 col-sm-offset-2">
+                    <button class="btn btn-primary btn-lg btn-block" type="button" ng-click="submitAnAnswer()">
+                        Submit
+                    </button>
+                </div>
+                <div class="col-xs-12 col-sm-1 input-gap"></div>
+                <div class="col-xs-5 col-xs-offset-0 col-sm-3 col-sm-offset-1">
+                    <button class="btn btn-danger btn-lg btn-block" type="reset">Rest</button>
+                </div>
             </div>
-            <div class="col-xs-12 col-sm-1 input-gap"></div>
-            <div class="col-xs-5 col-xs-offset-0 col-sm-3 col-sm-offset-1">
-                <button class="btn btn-danger btn-lg btn-block" type="reset">Rest</button>
-            </div>
-        </div>
-    </from>
+        </from>
+    </div>
 </div>
