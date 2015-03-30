@@ -1,0 +1,74 @@
+<div class="collapse navbar-collapse question-navbar-main">
+    <ul class="nav navbar-nav question-navbar-list">
+        <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">All Activity</a> </li>
+        <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Questions</a> </li>
+        <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Unanswered</a> </li>
+        <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Tags</a> </li>
+    </ul>
+</div>
+<!-- End of question list nav bar -->
+
+<!-- Question List heading -->
+<div class="page-header">
+    <h3>{{question.description}}</h3>
+</div>
+<div class="row">
+    <div class="col-sm-1 hidden-xs">
+        <div class="media-object">Votes</div>
+    </div>
+    <div class="col-xs-12 col-sm-8 question-desc-main">
+        <p>{{question.description}}</p>
+        <blockquote>
+            <p>{{question.description}}</p>
+        </blockquote>
+        <p>{{question.description}}</p>
+        <p><code>{{question.description}}</code></p>
+        <p>{{question.description}}</p>
+        <pre>{{question.description}}</pre>
+    </div>
+    <div class="col-sm-3 hidden-xs">
+        <div class="panel panel-info">
+            <div class="panel-heading">Tags</div>
+            <div class="panel-body">
+                <p>All the tags about this question</p>
+            </div>
+            <div class="list-group">
+                <a class="list-group-item" href="#/tags/{{tag}}"
+                   ng-repeat="tag in question.tags track by $index">{{tag}}</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-9">
+        <div class="alert alert-info" role="alert">Answers</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-9">
+        <from class="form-horizontal">
+            <!-- descriptions -->
+            <div class="from-group">
+                <label for="questionAnswer" class="col-sm-8 sr-only">Answer descriptions</label>
+
+                <div class="col-sm-12 input-gap">
+                    <textarea class="form-control input-lg" id="questionAnswer" rows="8"
+                              placeholder="Answer this question"
+                              ng-model="desc"></textarea>
+                </div>
+            </div>
+            <!-- buttons submit & rest -->
+            <div class="from-group">
+                <div class="col-xs-5 col-xs-offset-0 col-sm-3 col-sm-offset-2">
+                    <button class="btn btn-primary btn-lg btn-block" type="button" ng-click="submitAnAnswer()">
+                        Submit
+                    </button>
+                </div>
+                <div class="col-xs-12 col-sm-1 input-gap"></div>
+                <div class="col-xs-5 col-xs-offset-0 col-sm-3 col-sm-offset-1">
+                    <button class="btn btn-danger btn-lg btn-block" type="reset">Rest</button>
+                </div>
+            </div>
+        </from>
+    </div>
+</div>

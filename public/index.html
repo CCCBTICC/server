@@ -2,10 +2,12 @@
 <html ng-app="interviewAid">
 <head lang="en">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Welcome</title>
 
     <!-- Bootstrap css file -->
     <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="stylesheets/bootstrap.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
     <!-- Customer style -->
@@ -18,7 +20,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-xs-8 col-xs-offset-2 col-sm-7 col-sm-offset-1 col-md-7 col-md-offset-1 search-bar">
+        <div class="col-xs-12 col-sm-8 search-bar">
             <div class="input-group">
                 <input type="text" class="form-control input-lg form-control-search" placeholder="Search for...">
                     <span class="input-group-btn">
@@ -27,12 +29,12 @@
             </div>
             <!-- /input-group -->
         </div>
-        <div class="col-xs-8 col-xs-offset-2 col-sm-3 col-sm-offset-0 col-md-3 col-md-offset-0">
-            <a href="#/ask" class="btn btn-primary btn-lg btn-ask-a-question">Ask A Question</a>
+        <div class="col-xs-12 col-sm-4 search-bar">
+            <a href="#/ask" class="btn btn-primary btn-lg btn-block">Ask A Question</a>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-8 col-xs-offset-2 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1" ng-view></div>
+    <div class="row ng-view-container">
+        <div class="col-xs-12" ng-view></div>
     </div>
     <hr class="featurette-divider">
 
@@ -70,6 +72,7 @@
 <script src="javascript/appFactory.js"></script>
 <script src="javascript/askQuestionController.js"></script>
 <script src="javascript/listQuestionController.js"></script>
+<script src="javascript/answerQuestionController.js"></script>
 <script src="javascript/app.js"></script>
 </body>
 </html>

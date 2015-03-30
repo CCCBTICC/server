@@ -20,8 +20,8 @@
                 </li>
             </ul>
             <ul class='nav navbar-nav navbar-right'>
-                <li ng-repeat = "button in buttons" class='navbar-form'>
-                    <button type='button' class='btn {{button.type}} btn-block' ng-click="button.click()">{{button.text}}</button>
+                <li ng-repeat = "button in buttons">
+                    <button type='button' class='btn {{button.type}} btn-block navbar-btn' ng-click="button.click()">{{button.text}}</button>
                 </li>
             </ul>
         </div>

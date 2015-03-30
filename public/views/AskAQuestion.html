@@ -1,5 +1,6 @@
-<h1>Ask a Question</h1>
-<hr>
+<div class="page-header">
+    <h3>Ask question</h3>
+</div>
 <from class="form-horizontal">
     <!-- title -->
     <div class="from-group">
@@ -15,8 +16,8 @@
             <textarea class="form-control input-lg" id="questionDesc" rows="8" placeholder="Describe your question" ng-model="desc"></textarea>
         </div>
     </div>
+    <!-- tags -->
     <div class="from-group">
-        <!-- tags -->
         <label for="questionTags" class="col-sm-8">Question tags, separated by ";", eg.: Java;C++;Python</label>
         <div class="col-sm-12 input-gap">
             <input type="text" class="form-control input-lg" id="questionTags" placeholder="Add tag here" ng-model="tgs">
@@ -25,13 +26,13 @@
     <!-- buttons submit & rest -->
     <div class="from-group">
         <div class="col-xs-5 col-xs-offset-0 col-sm-3 col-sm-offset-2">
-            <button class="btn btn-primary btn-lg btn-ask-a-question" type="button" ng-click="submitAQuestion()">
+            <button class="btn btn-primary btn-lg btn-block" type="button" ng-click="submitAQuestion()">
                 Submit
             </button>
         </div>
         <div class="col-xs-12 col-sm-1 input-gap"></div>
         <div class="col-xs-5 col-xs-offset-0 col-sm-3 col-sm-offset-1">
-            <button class="btn btn-danger btn-lg btn-ask-a-question" type="reset">Rest</button>
+            <button class="btn btn-danger btn-lg btn-block" type="reset">Rest</button>
         </div>
     </div>
 </from>

@@ -4,7 +4,7 @@
 
 var askQuestionController = angular.module('askQuestionController', []);
 
-askQuestionController.controller('AskQuestionCtrl', function ($scope, InterviewQuestion) {
+askQuestionController.controller('AskQuestionCtrl', function ($scope, $location, InterviewQuestion) {
     $scope.submitAQuestion = function () {
         var questionAddInfo = {};
         questionAddInfo.action = "create";
@@ -13,7 +13,9 @@ askQuestionController.controller('AskQuestionCtrl', function ($scope, InterviewQ
         questionAddInfo.data.description = $scope.desc;
         questionAddInfo.data.tags = $scope.tgs.split(";");
         InterviewQuestion.postQuestion(questionAddInfo,function(data, status){
-            console.log("data-->" + data + "\nstatus" + status);
+           if(status==200){
+               $location.path("/questions/list");
+           }
         });
 
         //var url = window.location.origin + "/questions";
