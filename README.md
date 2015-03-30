@@ -46,6 +46,7 @@ use interviewDB
        {
            "action": "create",
            "data": {
+               "description": "testtest",
                "questionId": "5510b357fc789da15cd2cf1f"
            }
        }
