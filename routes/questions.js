@@ -5,21 +5,35 @@ var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
 
-/* GET home page. */
+//Get question list
 router.get('/list', function (req, res, next) {
-    req.db.collection('questions').find({}, {title:1, description: 1, tags: 1}, function (err, docs) {
+    req.db.collection('questions').find({}, {title: 1, description: 1, tags: 1}, function (err, docs) {
         res.send(JSON.stringify(docs));
     });
 });
-
+//Get single question
 router.get('/', function (req, res, next) {
     var _id = req.query.id;
-    console.log(_id);
-    req.db.collection('questions').find({_id:mongojs.ObjectId(_id)}, {title:1, description: 1, tags: 1}, function (err, docs) {
-        res.send(JSON.stringify(docs));
+    //console.log(_id);
+    req.db.collection('questions').findOne({_id: mongojs.ObjectId(_id)}, {
+        title: 1,
+        description: 1,
+        tags: 1,
+        answers: 1
+    }, function (err, question) {
+        req.db.collection('answers').find({_id: {$in: question.answers}}, {
+            _id: 1,
+            description: 1,
+            comments:1
+        }, function (e, answers) {
+            question.answers = answers;
+            console.log(JSON.stringify(question));
+            res.write(JSON.stringify(question));
+            res.end();
+        });
     });
 });
-
+//create and remove question;
 router.post('/', function (req, res) {
     var action = req.body.action;
     var data = req.body.data;
@@ -47,13 +61,19 @@ function createQuestion(req, res, data) {
 }
 
 function removeQuestion(req, res, data) {
-    req.db.collection('questions').remove({_id: mongojs.ObjectId(data._id)}, function (err) {
-        if (err == null) {
-            res.status(200);
-        } else {
-            res.status(400);
+    req.db.collection('questions').findOne({_id: mongojs.ObjectId(data._id)},{answers:1},function(err,question){
+        if(question!==null) {
+            req.db.collection('answers').remove({_id: {$in: question.answers}});
         }
-        res.send();
+
+        req.db.collection('questions').remove({_id: mongojs.ObjectId(data._id)}, function (err) {
+            if (err == null) {
+                res.status(200);
+            } else {
+                res.status(400);
+            }
+            res.send();
+        });
     });
 }
 

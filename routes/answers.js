@@ -43,7 +43,6 @@ function createAnswer(req, res, data){
 }
 
 function removeAnswer(req, res, data){
-
     console.log("removeAnswer");
     req.db.collection('answers').findOne({_id:mongojs.ObjectId(data._id)},{questionId:1}, function (err,docs) {
         req.db.collection('questions').update({_id:mongojs.ObjectId(docs.questionId)},{$pull:{answers:mongojs.ObjectId(data._id)}}, function (err,docs) {
@@ -57,7 +56,6 @@ function removeAnswer(req, res, data){
             });
         });
     });
-
 }
 
 module.exports = router;
