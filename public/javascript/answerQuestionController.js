@@ -5,7 +5,11 @@
 var answerQuestionController = angular.module('answerQuestionController', []);
 
 answerQuestionController.controller('AnswerQuestionCtrl', function ($scope, $routeParams, $location, InterviewQuestion) {
-    $scope.question = InterviewQuestion.tempQuestion;
+    InterviewQuestion.getQuestionById($routeParams.questionId, function (result) {
+        console.log($routeParams.questionId);
+        $scope.question = result;
+        console.log($scope.question);
+    });
 
     $scope.submitAnAnswer = function () {
         var answerAddInfo = {};

@@ -1,71 +1,66 @@
-<!--<div class="question-index">-->
-    <!-- Question list nav bar -->
-    <div class="collapse navbar-collapse question-navbar-main">
-        <ul class="nav navbar-nav question-navbar-list">
-            <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">All Activity</a> </li>
-            <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Questions</a> </li>
-            <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Unanswered</a> </li>
-            <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Tags</a> </li>
-        </ul>
-    </div>
-    <!-- End of question list nav bar -->
+<!-- Question list nav bar -->
+<div class="collapse navbar-collapse question-navbar-main">
+    <ul class="nav navbar-nav question-navbar-list">
+        <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">All Activity</a> </li>
+        <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Questions</a> </li>
+        <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Unanswered</a> </li>
+        <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Tags</a> </li>
+    </ul>
+</div>
+<!-- End of question list nav bar -->
 
-    <!-- Question List heading -->
+<!-- Question List heading -->
+<div class="page-title">
     <div class="page-header">
         <h3>Question index</h3>
     </div>
-    <!-- End of question list heading -->
+</div>
+<!-- End of question list heading -->
 
-    <!-- Question list in table format -->
-    <!--<div class="table-responsive">-->
-    <div class="list-group">
-        <div class="list-group-item"
-             ng-repeat="question in questions track by $index | filter:query | orderBy:sortField:reverse">
-            <div class="media">
-                <div class="media-left hidden-xs item-state">
-                    <div class="media-object item-stats">
-                        <div class="col-md-4">Votes</div>
-                        <div class="col-md-4">Answers</div>
-                        <div class="col-md-4">Views</div>
-                    </div>
+<!-- Question list -->
+<div class="list-group q-list">
+    <div class="list-group-item"
+         ng-repeat="question in questions track by $index | filter:query | orderBy:sortField:reverse">
+        <div class="media">
+            <div class="media-left hidden-xs q-list-item-states">
+                <div class="media-object">
+                    <div class="q-list-item-state votes">Votes</div>
+                    <div class="q-list-item-state answers">Answers</div>
+                    <div class="q-list-item-state views">Views</div>
                 </div>
-                <div class="media-body">
-                    <a href="" ng-click="goToAnswerQuestion(question)"><h4 class="media-heading">{{question.description}}</h4></a>
+            </div>
+            <div class="media-body">
+                <a href="" ng-click="goToAnswerQuestion(question)"><h4 class="media-heading">{{question.title}}</h4></a>
 
-                    <p>{{question.description}}</p>
+                <p>{{question.description}}</p>
 
-                    <div class="btn-toolbar" role="toolbar" aria-label="tags">
-                        <a class="btn btn-info btn-xs" href="#/tags/{{tag}}"
-                           ng-repeat="tag in question.tags track by $index">{{tag}}</a>
-                    </div>
+                <div class="btn-toolbar" role="toolbar" aria-label="tags">
+                    <a class="btn btn-info btn-xs btn-tags" href="#/tags/{{tag}}"
+                       ng-repeat="tag in question.tags track by $index">{{tag}}</a>
                 </div>
-                <div class="media-right media-middle">
-                    <div class="media-object">
-                        <button class="btn btn-danger" type="button" ng-click="deleteQuestion(question._id)">Delete
-                        </button>
-                    </div>
+            </div>
+            <div class="media-right media-middle">
+                <div class="media-object">
+                    <button class="btn btn-danger" type="button" ng-click="deleteQuestion(question._id)">Delete
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-        <!--<table class="table">-->
-            <!--<tr>-->
-                <!--<th></th>-->
-                <!--<th><a href="" ng-click="sortField='$index'; reverse=!reverse">#</a><span class="{{numberSort}}"></span></th>-->
-                <!--<th>Votes/Ans/Views</th>-->
-                <!--<th>Description</th>-->
-                <!--<th>Operations</th>-->
-            <!--</tr>-->
-            <!--<tr ng-repeat="question in questions track by $index | filter:query | orderBy:sortField:reverse">-->
-                <!--<td></td>-->
-                <!--<td>{{$index}}</td>-->
-                <!--<td style="width: 100px">-->
-                    <!--Votes<br>Answers<br>Views-->
-                <!--</td>-->
-                <!--<td>{{question.description}}<br><span ng-repeat="tag in question.tags track by $index">{{tag}};</span></td>-->
-                <!--<td><button class="btn btn-danger" type="button" ng-click="deleteQuestion(question._id)">Delete</button></td>-->
-            <!--</tr>-->
-        <!--</table>-->
-    <!--</div>-->
-    <!-- End 0f question list in table format -->
-<!--</div>-->
+</div>
+<nav>
+    <ul class="pagination" ng-show="totalPage>1">
+        <li ng-hide="currentPage==1">
+            <a href="javascript:void(0);"ng-click="prev()" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <!--<li id="{{page}}" ng-repeat="page in pages" ng-click="pageOnClick(page)"><a href="javascript:void(0);" ng-click="loadPage(page)">{{ page }}</a></li>-->
+        <li id="{{page}}" ng-repeat="page in pages"><a href="javascript:void(0);" ng-click="loadPage(page)">{{ page }}</a></li>
+        <li ng-hide="currentPage==totalPage">
+            <a href="javascript:void(0);" ng-click="next()" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

@@ -6,7 +6,7 @@ angular.module('interviewAidFactory', []).factory('InterviewQuestion', function 
     var baseUrl = window.location.origin;
     var listQuestionUrl = baseUrl + "/questions/list";
     var postQuestionUrl = baseUrl + "/questions";
-    var lsitAnswerUrl = baseUrl + "/answers/";
+    var getQuestion = baseUrl + "/questions?id=";
     var postAnswerUrl = baseUrl + "/answers";
     return {
         listQuestions: function (callback) {
@@ -29,10 +29,10 @@ angular.module('interviewAidFactory', []).factory('InterviewQuestion', function 
                 data: questionDeleteInfo
             }).success(callback);
         },
-        listAnswer: function (questionId, callback) {
+        getQuestionById: function (questionId, callback) {
             $http({
                 method: 'GET',
-                url: lsitAnswerUrl + questionId
+                url: getQuestion + questionId
             }).success(callback);
         },
         postAnswer: function (answerAddInfo, callback) {

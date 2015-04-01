@@ -10,11 +10,13 @@
 
 <!-- Question List heading -->
 <div class="page-header">
-    <h3>{{question.description}}</h3>
+    <h3>{{question.title}}</h3>
 </div>
 <div class="row">
     <div class="col-sm-1 hidden-xs">
-        <div class="media-object">Votes</div>
+        <div class="media-object">
+            <div class="q-list-item-state votes">Votes</div>
+        </div>
     </div>
     <div class="col-xs-12 col-sm-8 question-desc-main">
         <p>{{question.description}}</p>

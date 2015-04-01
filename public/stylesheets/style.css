@@ -1,27 +1,24 @@
 /* for all elements */
-* {
-    border-radius: 2px;
+html, body {
+    color: #505050;
+    line-height: 1.7em;
+    background: #f9f9f9;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-a {
+.form-control, .btn, a, button {
+    border-radius: 1px;
     text-decoration: none;
+    outline: none;
 }
 
-a:hover {
+a:active, a:focus, a:hover, a {
+    outline: none;
     text-decoration: none;
-}
-
-li {
-    display: list-item;
-    text-align: -webkit-match-parent;
 }
 
 /* overwrite bootstrap class*/
-.btn {
-    border-radius: 1px;
-}
-
-.navbar-right li {
+.navbar-collapse .navbar-right li {
     margin-left: 10px;
     margin-right: 10px;
 }
@@ -36,18 +33,28 @@ li {
     margin-bottom: 30px;
 }
 
+.page-load-progress-bar {
+    border-radius: 0;
+    height: 3px;
+    background: #f9f9f9;
+}
+
+.page-load-progress-bar, .progress-bar {
+    border: none;
+    box-shadow: none;
+}
+
 /* search bar & ask a question button */
 .search-bar {
     padding-bottom: 15px;
 }
 
-.form-control-search {
-    border-radius: 1px;
-}
-
 /* footer */
-.featurette-divider {
-    margin: 80px 0;
+.footer {
+    margin-top: 80px;
+    padding-top: 20px;
+    border-top: 3px solid rgba(0, 0, 0, 0.1);
+    /*background: #101010;*/
 }
 
 /****************************/
@@ -62,7 +69,6 @@ li {
 /****************************/
 .ng-view-container {
     text-align: left;
-    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
     display: block;
 }
 
@@ -99,8 +105,6 @@ li {
     padding: 7px 9px;
     -moz-transition: all ease-in-out 0.5s;
     -webkit-transition: all ease-in-out 0.5s;
-    -o-transition: all ease-in-out 0.5s;
-    -ms-transition: all ease-in-out 0.5s;
     transition: all ease-in-out 0.5s;
 }
 
@@ -110,17 +114,58 @@ li {
     transition: all 0.2s ease-in-out 0s;
 }
 
+/* question page title */
+.page-title {
+    padding-left: 5px;
+}
+
 /* question list */
-.item-state {
-    width: 35%;
+.q-list {
+    min-width: 650px;
+}
+
+.q-list-item-states {
+    min-width: 220px;
+}
+
+.q-list-item-state {
+    float: left;
+    height: 65px;
+    width: 65px;
+    border-radius: 2px;
+    margin-right: 5px;
+    padding: 0;
+    overflow: hidden;
+    text-align: center;
+}
+
+.votes {
+    background: #c9fdfc;
+    border: 1px solid #b1e0c6;
+}
+
+.answers {
+    background: #ffe9d5;
+    border: 1px solid #ffd196;
+}
+
+.views {
+    background: #c9fdfc;
+    border: 1px solid #b1e0c6;
+
+}
+
+.btn-tags {
+    font-family: "Courier New", "Lucida Console", Monospace;
 }
 
 /****************************/
 /*   answer question page   */
 /****************************/
 .question-desc-main {
+    padding-left: 25px;
     font-size: 18px;
-    line-height: 1.5;
+    line-height: 1em;
     font-family: Georgia, "Times New Roman", Times, serif;
     color: #555;
 }
