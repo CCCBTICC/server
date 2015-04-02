@@ -4,11 +4,8 @@
 
 var app = angular.module('interviewAid', [
     'ngRoute',
-    'interviewAidFactory',
-    'askQuestionController',
-    'listQuestionController',
-    'answerQuestionController',
-    'CBTINavBar'
+    'ui.bootstrap',
+    'ia.Utils'
 ]);
 
 app.config(function ($routeProvider) {

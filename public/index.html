@@ -8,25 +8,36 @@
     <!--<link rel="stylesheet" href="javascript/addOn/pace-0.5.6/pace-theme-barber-shop.css">-->
     <!--<script src="javascript/addOn/pace-0.5.6/pace.min.js"></script>-->
 
+    <!-- cnd local copy (just for test and develop) -->
+    <link rel="stylesheet" href="addOn/cdnFileLocalCopy/bootstrap.css">
+    <script src="addOn/cdnFileLocalCopy/angular.js"></script>
+    <script src="addOn/cdnFileLocalCopy/angular-route.js"></script>
+    <script src="addOn/cdnFileLocalCopy/jquery-2.1.3.js"></script>
+    <script src="addOn/cdnFileLocalCopy/bootstrap.js"></script>
+    <script src="addOn/cdnFileLocalCopy/ui-bootstrap-tpls-0.12.1.js"></script>
+
     <!-- Bootstrap css file -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="stylesheets/bootstrap.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">-->
 
     <!-- Customer style -->
     <link rel="stylesheet" href="stylesheets/style.css">
 
 </head>
 <body ng-controller="DOMPositionCtrl">
-<nav-bar id="topPosition" ng-controller="navController"></nav-bar>
+<!-- Start navigation bar (main menu) -->
+<nav>
+    <nav-bar id="topPosition" ng-controller="navController"></nav-bar>
+</nav>
+<!-- End of navigation bar -->
 
 <!--<div class="progress page-load-progress-bar">-->
-    <!--<div id="status" class="pace progress-bar progress-bar-success progress-bar-striped active " role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">-->
-        <!--<span class="sr-only">60% Complete</span>-->
-    <!--</div>-->
+<!--<div id="status" class="pace progress-bar progress-bar-success progress-bar-striped active " role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">-->
+<!--<span class="sr-only">60% Complete</span>-->
 <!--</div>-->
+<!--</div>
 
-<div class="container">
+<!-- Start of search bar -->
+<header class="container">
     <div class="row search-bar">
         <div class="col-xs-12 col-sm-8 search-bar">
             <div class="input-group">
@@ -41,14 +52,17 @@
             <a href="#/ask" class="btn btn-primary btn-lg btn-block">Ask A Question</a>
         </div>
     </div>
-</div>
-<div class="container ng-view-container">
-    <div class="row">
-        <div class="col-xs-12" ng-view></div>
-    </div>
-</div>
+</header>
+<!-- End of search bar -->
 
-<!-- FOOTER -->
+<section>
+    <div class="container ng-view-container">
+        <div class="row">
+            <div class="col-xs-12" ng-view></div>
+        </div>
+    </div>
+</section>
+<!-- Start of footer -->
 <footer class="footer">
     <div class="container">
         <p class="pull-right">
@@ -64,44 +78,29 @@
         </p>
     </div>
 </footer>
+<!-- End of footer -->
 
-
-<!-- AngularJS cdn  1.3.14 -->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-<!-- AngularJS ngRoute cdn 1.3.14 -->
-<script src="http://code.angularjs.org/1.3.14/angular-route.js"></script>
-
-<!-- jQuery cdn  1.11.2 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
-<!-- Latest compiled and minified JavaScript   3.3.4  -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<!-- cnd for all request javascript -->
+<!--&lt;!&ndash; AngularJS cdn  1.3.14 &ndash;&gt;-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>-->
+<!--&lt;!&ndash; AngularJS ngRoute cdn  1.3.14 &ndash;&gt;-->
+<!--<script src="https://code.angularjs.org/1.3.14/angular-route.min.js"></script>-->
+<!--&lt;!&ndash; jQuery cdn  1.11.2 &ndash;&gt;-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+<!--&lt;!&ndash; Latest compiled and minified JavaScript   3.3.4  &ndash;&gt;-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
+<!--&lt;!&ndash; UI Bootstrap 0.12.1 &ndash;&gt;-->
+<!--<script src="addOn/ui-bootstrap-0.12.1/ui-bootstrap-0.12.1.min.js"></script>-->
 
 <!-- Customer JavaScript -->
-
 <script src="javascript/CBTINavBar.js"></script>
 <script src="javascript/appFactory.js"></script>
-<script src="javascript/askQuestionController.js"></script>
+<script src="javascript/ia.askQuestionModule.js"></script>
+<script src="javascript/ia.paginationModule.js"></script>
 <script src="javascript/listQuestionController.js"></script>
 <script src="javascript/answerQuestionController.js"></script>
+<script src="javascript/interview.js"></script>
 <script src="javascript/app.js"></script>
 
-<script type="text/javascript">
-    //进度条
-    var i = 0;
-    function loadover() {
-        if (i > 100) { //当大于100%时消失进度条
-            $('#status').animate({width:"100%"},2000); //减少#loadpercent的宽度，消失效果
-            return;
-        }
-        if (i <= 100) { //百分比计数，延迟加载
-            setTimeout("loadover()", 100);
-            i=i+5;
-        }
-    }
-    $(document).ready(function() {
-        loadover();
-    });
-</script>
 </body>
 </html>

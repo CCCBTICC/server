@@ -1,38 +1,54 @@
 <div class="page-header">
     <h3>Ask question</h3>
 </div>
-<from class="form-horizontal">
+<form class="form-horizontal" name="askQuestionForm" novalidate>
     <!-- title -->
-    <div class="from-group">
-        <label for="questionTitle" class="col-sm-8">Title (Insert question title here, eg.: "hello world" in oop languages)</label>
-        <div class="col-sm-12 input-gap">
-            <input type="text" class="form-control input-lg" id="questionTitle" placeholder="Question title" ng-model="title">
+    <div class="from-group input-gap">
+        <div class="col-xs-8 pull-right" ng-show="askQuestionForm.$submitted || askQuestionForm.questionTitle.$touched">
+            <div class="label label-danger" ng-show="askQuestionForm.questionTitle.$error.required">Question title cannot be empty</div>
         </div>
+        <label for="questionTitle" tooltip="What is the question about?"
+               tooltip-placement="right">Title</label>
+        <input class="form-control" id="questionTitle" type="text" name="questionTitle" placeholder="Question's title"
+               required="required" ng-model="question.data.title">
     </div>
     <!-- descriptions -->
-    <div class="from-group">
-        <label for="questionDesc" class="col-sm-8">Question descriptions</label>
-        <div class="col-sm-12 input-gap">
-            <textarea class="form-control input-lg" id="questionDesc" rows="8" placeholder="Describe your question" ng-model="desc"></textarea>
+    <div class="from-group input-gap">
+        <div class="col-xs-8 pull-right" ng-show="askQuestionForm.$submitted || askQuestionForm.questionDesc.$touched">
+            <div class="label label-danger" ng-show="askQuestionForm.questionDesc.$error.required">Question descriptions cannot be empty</div>
         </div>
+        <label for="questionDesc">Question descriptions</label>
+        <textarea class="form-control" id="questionDesc" rows="8" name="questionDesc"
+                  placeholder="Describe your question" required="required"
+                  ng-model="question.data.description"></textarea>
     </div>
     <!-- tags -->
-    <div class="from-group">
-        <label for="questionTags" class="col-sm-8">Question tags, separated by ";", eg.: Java;C++;Python</label>
-        <div class="col-sm-12 input-gap">
-            <input type="text" class="form-control input-lg" id="questionTags" placeholder="Add tag here" ng-model="tgs">
+    <div class="from-group input-gap">
+        <div class="col-xs-8 pull-right" ng-show="askQuestionForm.questionTags.$touched">
+            <div class="label label-warning" ng-show="!question.data.tags">Anything would be good~</div>
+        </div>
+        <label for="questionTags" tooltip='Can not over {{totalNumOfTags}} tags' tooltip-placement="right">Question tags</label>
+        <input class="form-control input-gap" id="questionTags" type="text" name="questionTags" ng-change="getTagList()"
+               placeholder='separated by ";". Such as: Java;C++;Python' name="questionTags" value="" ng-model="question.data.tags">
+
+        <div ng-show="question.data.tags.length>0" class="btn-toolbar" role="toolbar" aria-label="tags">
+            <label for="tagShow">Your tag<span ng-show="tagsList.length>1">s</span> will be: </label>
+            <a class="btn btn-info btn-xs btn-tags" href="" id="tagShow"
+               ng-repeat="tag in tagsList track by $index">{{tag}}</a>
         </div>
     </div>
     <!-- buttons submit & rest -->
     <div class="from-group">
         <div class="col-xs-5 col-xs-offset-0 col-sm-3 col-sm-offset-2">
-            <button class="btn btn-primary btn-lg btn-block" type="button" ng-click="submitAQuestion()">
+            <button class="btn btn-primary btn-block" type="submit"
+                    ng-click="submitAQuestion(question, askQuestionForm.questionTitle, askQuestionForm.questionDesc)">
                 Submit
             </button>
         </div>
         <div class="col-xs-12 col-sm-1 input-gap"></div>
         <div class="col-xs-5 col-xs-offset-0 col-sm-3 col-sm-offset-1">
-            <button class="btn btn-danger btn-lg btn-block" type="reset">Rest</button>
+            <button class="btn btn-danger btn-block" type="reset" ng-click="resetQuestionInfo(askQuestionForm)">Rest
+            </button>
         </div>
     </div>
-</from>
+</form>

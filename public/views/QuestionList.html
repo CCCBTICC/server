@@ -9,6 +9,16 @@
 </div>
 <!-- End of question list nav bar -->
 
+
+<div class="row">
+
+    <div class="col-xs-4">
+        <label for="search">Search:</label>
+        <input ng-model="query" id="search" class="form-control" placeholder="Filter text">
+    </div>
+</div>
+
+
 <!-- Question List heading -->
 <div class="page-title">
     <div class="page-header">
@@ -19,8 +29,7 @@
 
 <!-- Question list -->
 <div class="list-group q-list">
-    <div class="list-group-item"
-         ng-repeat="question in questions track by $index | filter:query | orderBy:sortField:reverse">
+    <div class="list-group-item" ia-pagination="question in questions | filter:query | itemsPerPage: pageSize | orderBy:sortField:reverse track by $index" current-page="currentPage" pagination-id="questionListPagination">
         <div class="media">
             <div class="media-left hidden-xs q-list-item-states">
                 <div class="media-object">
@@ -48,19 +57,22 @@
         </div>
     </div>
 </div>
-<nav>
-    <ul class="pagination" ng-show="totalPage>1">
-        <li ng-hide="currentPage==1">
-            <a href="javascript:void(0);"ng-click="prev()" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        <!--<li id="{{page}}" ng-repeat="page in pages" ng-click="pageOnClick(page)"><a href="javascript:void(0);" ng-click="loadPage(page)">{{ page }}</a></li>-->
-        <li id="{{page}}" ng-repeat="page in pages"><a href="javascript:void(0);" ng-click="loadPage(page)">{{ page }}</a></li>
-        <li ng-hide="currentPage==totalPage">
-            <a href="javascript:void(0);" ng-click="next()" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
+<!--<nav>-->
+    <!--<ul class="pagination" ng-show="totalPage>1">-->
+        <!--<li ng-hide="currentPage==1">-->
+            <!--<a href="javascript:void(0);"ng-click="prev()" aria-label="Previous">-->
+                <!--<span aria-hidden="true">&laquo;</span>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--&lt;!&ndash;<li id="{{page}}" ng-repeat="page in pages" ng-click="pageOnClick(page)"><a href="javascript:void(0);" ng-click="loadPage(page)">{{ page }}</a></li>&ndash;&gt;-->
+        <!--<li id="{{page}}" ng-repeat="page in pages"><a href="javascript:void(0);" ng-click="loadPage(page)">{{ page }}</a></li>-->
+        <!--<li ng-hide="currentPage==totalPage">-->
+            <!--<a href="javascript:void(0);" ng-click="next()" aria-label="Next">-->
+                <!--<span aria-hidden="true">&raquo;</span>-->
+            <!--</a>-->
+        <!--</li>-->
+    <!--</ul>-->
+<!--</nav>-->
+<nav class="text-left">
+    <ia-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" pagination-id="questionListPagination"></ia-pagination-controls>
 </nav>

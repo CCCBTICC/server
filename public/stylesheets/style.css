@@ -23,6 +23,10 @@ a:active, a:focus, a:hover, a {
     margin-right: 10px;
 }
 
+.nav, .pagination, .carousel, .panel-title a {
+    cursor: pointer;
+}
+
 /* Customer style*/
 /****************************/
 /*        shell page        */
@@ -61,7 +65,7 @@ a:active, a:focus, a:hover, a {
 /* ask question detail page */
 /****************************/
 .input-gap {
-    padding-bottom: 25px;
+    margin-bottom: 25px;
 }
 
 /****************************/
