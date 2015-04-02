@@ -1,34 +1,44 @@
 <div class="collapse navbar-collapse question-navbar-main">
     <ul class="nav navbar-nav question-navbar-list">
-        <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">All Activity</a> </li>
-        <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Questions</a> </li>
-        <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Unanswered</a> </li>
-        <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Tags</a> </li>
+        <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">All Activity</a></li>
+        <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Questions</a></li>
+        <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Unanswered</a></li>
+        <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Tags</a></li>
     </ul>
 </div>
 <!-- End of question list nav bar -->
 
 <!-- Question List heading -->
+<!-- Start of question title -->
 <div class="page-header">
     <h3>{{question.title}}</h3>
 </div>
+<!-- End of question title -->
+<!-- Start of question main body -->
 <div class="row">
+    <!-- Start of question votes -->
     <div class="col-sm-1 hidden-xs">
         <div class="media-object">
             <div class="q-list-item-state votes">Votes</div>
         </div>
     </div>
+    <!-- End of question votes -->
+    <!-- Start of question description -->
     <div class="col-xs-12 col-sm-8 question-desc-main">
         <p>{{question.description}}</p>
         <blockquote>
             <p>{{question.description}}</p>
         </blockquote>
         <p>{{question.description}}</p>
+
         <p><code>{{question.description}}</code></p>
+
         <p>{{question.description}}</p>
         <pre>{{question.description}}</pre>
     </div>
-    <div class="col-sm-3 hidden-xs">
+    <!-- End of question description -->
+    <!-- Start of question tags -->
+    <div ng-show="question.tags.length>0" class="col-sm-3 hidden-xs">
         <div class="panel panel-info">
             <div class="panel-heading">Tags</div>
             <div class="panel-body">
@@ -40,12 +50,42 @@
             </div>
         </div>
     </div>
+    <!-- End of question tags -->
 </div>
+<!-- End of question main body -->
+<!-- Start of answer label -->
 <div class="row">
     <div class="col-xs-12 col-sm-9">
         <div class="alert alert-info" role="alert">Answers</div>
     </div>
 </div>
+<!-- End of answer label -->
+<!-- Start of answered list -->
+<div ng-show="question.answers.length>0">
+    <div  class="row" ng-repeat="answer in question.answers">
+        <div class="col-sm-1 hidden-xs">
+            <div class="media-object">
+                <div class="a-item-state-votes">Votes</div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-8 answer-desc-main">
+            <div class="col-xs-3 pull-right">
+                <button class="btn btn-danger btn-block" ng-click="deleteAnswer(answer._id)">Delete</button>
+            </div>
+            <p>{{answer.description}}</p>
+            <blockquote>
+                <p>{{answer.description}}</p>
+            </blockquote>
+            <p>{{answer.description}}</p>
+
+            <p><code>{{answer.description}}</code></p>
+
+            <p>{{answer.description}}</p>
+            <pre>{{answer.description}}</pre>
+        </div>
+    </div>
+</div>
+<!-- End of answered list -->
 <div class="row">
     <div class="col-xs-12 col-sm-9">
         <from class="form-horizontal">

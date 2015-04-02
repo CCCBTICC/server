@@ -88,10 +88,4 @@ listQuestionController.controller('QuestionListCtrl', function ($scope, $locatio
             }
         });
     };
-
-    // transfer question will be answered to answer page
-    $scope.goToAnswerQuestion = function (questionObj) {
-        InterviewQuestion.tempQuestion = questionObj;
-        $location.path("/question/" + questionObj._id);
-    }
 });

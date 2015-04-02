@@ -24,4 +24,23 @@ answerQuestionController.controller('AnswerQuestionCtrl', function ($scope, $rou
             }
         });
     }
+
+    $scope.deleteAnswer = function (answerId) {
+        var answerDeleteInfo = {};
+        answerDeleteInfo.action = "remove";
+        answerDeleteInfo.data = {};
+        answerDeleteInfo.data._id = answerId;
+
+        InterviewQuestion.delAnswer(answerDeleteInfo, function (data, status) {
+            if (status == 200) {
+                var index = 0;
+                for (index; index < $scope.question.answers.length; index++) {
+                    if ($scope.question.answers[index]._id === answerId) {
+                        break;
+                    }
+                }
+                $scope.question.answers.splice(index, 1);
+            }
+        });
+    };
 });

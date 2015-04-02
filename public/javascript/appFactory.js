@@ -45,7 +45,7 @@ angular.module('interviewAidFactory', []).factory('InterviewQuestion', function 
         delAnswer: function (answerDeleteInfo, callback) {
             $http({
                 method: 'POST',
-                url: postQuestionUrl,
+                url: postAnswerUrl,
                 data: answerDeleteInfo
             }).success(callback);
         }

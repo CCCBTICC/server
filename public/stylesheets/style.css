@@ -156,7 +156,7 @@ a:active, a:focus, a:hover, a {
 }
 
 .btn-tags {
-    font-family: "Courier New", "Lucida Console", Monospace;
+    font-family: "Courier New", "Lucida Console", Monospace, serif;
 }
 
 /****************************/
@@ -164,6 +164,30 @@ a:active, a:focus, a:hover, a {
 /****************************/
 .question-desc-main {
     padding-left: 25px;
+    font-size: 18px;
+    line-height: 1em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: #555;
+}
+
+.a-item-state-votes {
+    float: left;
+    height: 65px;
+    width: 65px;
+    border-radius: 2px;
+    margin-right: 5px;
+    padding: 0;
+    overflow: hidden;
+    text-align: center;
+    background: #c9fdfc;
+    border: 1px solid #b1e0c6;
+}
+
+.answer-desc-main {
+    padding-left: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ebebeb;
+    margin-bottom: 35px;
     font-size: 18px;
     line-height: 1em;
     font-family: Georgia, "Times New Roman", Times, serif;

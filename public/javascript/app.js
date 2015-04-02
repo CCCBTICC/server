@@ -61,4 +61,4 @@ app.controller('DOMPositionCtrl', function ($scope, $location, $anchorScroll) {
         $location.hash('topPosition');
         $anchorScroll();
     };
-})
+});
