@@ -20,7 +20,7 @@ app.config(function ($routeProvider) {
         }).
         when('/ask', {
             templateUrl: '../views/AskAQuestion.html',
-            controller: 'AskQuestionCtrl'
+            controller: 'QuestionAskedCtrl'
         }).
         when('/question/:questionId', {
             templateUrl: '../views/AnswerQuestion.html',

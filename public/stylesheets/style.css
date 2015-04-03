@@ -71,6 +71,14 @@ a:active, a:focus, a:hover, a {
 /****************************/
 /*    list question page    */
 /****************************/
+iframe {
+    width: auto;
+    height: 100%;
+}
+.q-list .list-group-item {
+    height: 102px;
+}
+
 .ng-view-container {
     text-align: left;
     display: block;

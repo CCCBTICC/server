@@ -1,13 +1,13 @@
 /**
  * Created by lhz on 2015/3/24.
  */
-var moduleName = "interviewAid.angularUtils.askQuestionModule";
+var moduleName = "interviewAid.angularUtils.question.askedModule";
 
 angular.module(moduleName, [])
     .constant('askQuestionConfig', {
         'totalNumOfTags': 5
     })
-    .controller('AskQuestionCtrl', ['$scope', '$location', '$filter', 'InterviewQuestion', 'askQuestionConfig', function ($scope, $location, $filter, InterviewQuestion, askQuestionConfig) {
+    .controller('QuestionAskedCtrl', ['$scope', '$location', '$filter', 'InterviewQuestion', 'askQuestionConfig', function ($scope, $location, $filter, InterviewQuestion, askQuestionConfig) {
         // initialization
         $scope.totalNumOfTags = askQuestionConfig.totalNumOfTags;
 
@@ -18,9 +18,8 @@ angular.module(moduleName, [])
 
         // This function will handle submit button
         $scope.submitAQuestion = function (questionAddInfo, askQuestionFormTitle, askQuestionFormDesc) {
-            questionAddInfo.action = "create";
             if (typeof questionAddInfo.data !== 'undefined' && !askQuestionFormTitle.$error.required && !askQuestionFormDesc.$error.required) {
-                console.log(!askQuestionFormTitle.$error.required && !askQuestionFormDesc.$error.required);
+                questionAddInfo.action = "create";
                 questionAddInfo.data.tags = $scope.tagsList;
 
                 InterviewQuestion.postQuestion(questionAddInfo, function (data, status) {

@@ -1,5 +1,5 @@
 <div class="collapse navbar-collapse question-navbar-main">
-    <ul class="nav navbar-nav question-navbar-list">
+    <ul class="nav navbar-nav question-navbar-list" ng-hide="managerView">
         <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">All Activity</a></li>
         <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Questions</a></li>
         <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Unanswered</a></li>
@@ -10,107 +10,117 @@
 
 <!-- Question List heading -->
 <!-- Start of question title -->
-<div class="page-header">
+<div ng-class="{'page-header': managerView==false,'modal-header': managerView==true}">
+    <button type="button" class="close" ng-click="close()" ng-show="managerView"><span
+            aria-hidden="true">&times;</span></button>
     <h3>{{question.title}}</h3>
 </div>
 <!-- End of question title -->
 <!-- Start of question main body -->
-<div class="row">
-    <!-- Start of question votes -->
-    <div class="col-sm-1 hidden-xs">
-        <div class="media-object">
-            <div class="q-list-item-state votes">Votes</div>
-        </div>
-    </div>
-    <!-- End of question votes -->
-    <!-- Start of question description -->
-    <div class="col-xs-12 col-sm-8 question-desc-main">
-        <p>{{question.description}}</p>
-        <blockquote>
-            <p>{{question.description}}</p>
-        </blockquote>
-        <p>{{question.description}}</p>
-
-        <p><code>{{question.description}}</code></p>
-
-        <p>{{question.description}}</p>
-        <pre>{{question.description}}</pre>
-    </div>
-    <!-- End of question description -->
-    <!-- Start of question tags -->
-    <div ng-show="question.tags.length>0" class="col-sm-3 hidden-xs">
-        <div class="panel panel-info">
-            <div class="panel-heading">Tags</div>
-            <div class="panel-body">
-                <p>All the tags about this question</p>
-            </div>
-            <div class="list-group">
-                <a class="list-group-item" href="#/tags/{{tag}}"
-                   ng-repeat="tag in question.tags track by $index">{{tag}}</a>
-            </div>
-        </div>
-    </div>
-    <!-- End of question tags -->
-</div>
-<!-- End of question main body -->
-<!-- Start of answer label -->
-<div class="row">
-    <div class="col-xs-12 col-sm-9">
-        <div class="alert alert-info" role="alert">Answers</div>
-    </div>
-</div>
-<!-- End of answer label -->
-<!-- Start of answered list -->
-<div ng-show="question.answers.length>0">
-    <div  class="row" ng-repeat="answer in question.answers">
-        <div class="col-sm-1 hidden-xs">
+<div ng-class="{'modal-body': managerView==true}">
+    <div class="row">
+        <!-- Start of question votes -->
+        <div class="col-sm-1 hidden-xs" ng-hide="managerView">
             <div class="media-object">
-                <div class="a-item-state-votes">Votes</div>
+                <div class="q-list-item-state votes">Votes</div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-8 answer-desc-main">
-            <div class="col-xs-3 pull-right">
-                <button class="btn btn-danger btn-block" ng-click="deleteAnswer(answer._id)">Delete</button>
-            </div>
-            <p>{{answer.description}}</p>
+        <!-- End of question votes -->
+        <!-- Start of question description -->
+        <div class="col-xs-12 question-desc-main" ng-class="{'col-sm-8 ': managerView==false}">
+            <p>{{question.description}}</p>
             <blockquote>
-                <p>{{answer.description}}</p>
+                <p>{{question.description}}</p>
             </blockquote>
-            <p>{{answer.description}}</p>
+            <p>{{question.description}}</p>
 
-            <p><code>{{answer.description}}</code></p>
+            <p><code>{{question.description}}</code></p>
 
-            <p>{{answer.description}}</p>
-            <pre>{{answer.description}}</pre>
+            <p>{{question.description}}</p>
+            <pre>{{question.description}}</pre>
+        </div>
+        <!-- End of question description -->
+        <!-- Start of question tags -->
+        <div ng-show="question.tags.length>0&&managerView==false" class="col-sm-3 hidden-xs">
+            <div class="panel panel-info">
+                <div class="panel-heading">Tags</div>
+                <div class="panel-body">
+                    <p>All the tags about this question</p>
+                </div>
+                <div class="list-group">
+                    <a class="list-group-item" href="#/tags/{{tag}}"
+                       ng-repeat="tag in question.tags track by $index">{{tag}}</a>
+                </div>
+            </div>
+        </div>
+        <!-- End of question tags -->
+    </div>
+    <!-- End of question main body -->
+    <!-- Start of answer label -->
+    <div class="row">
+        <div class="col-xs-12" ng-class="{'col-sm-9 ': managerView==false}"">
+            <div class="alert alert-info" role="alert">Answers</div>
         </div>
     </div>
+    <!-- End of answer label -->
+    <!-- Start of answered list -->
+    <div ng-show="question.answers.length>0">
+        <div class="row" ng-repeat="answer in question.answers">
+            <div class="col-sm-1 hidden-xs" ng-hide="managerView">
+                <div class="media-object">
+                    <div class="a-item-state-votes">Votes</div>
+                </div>
+            </div>
+            <div class="col-xs-12 answer-desc-main" ng-class="{'col-sm-8 ': managerView==false}">
+                <div class="col-xs-3 pull-right">
+                    <button class="btn btn-danger btn-block" ng-click="deleteAnswer(answer._id)">Delete</button>
+                </div>
+                <p>{{answer.description}}</p>
+                <blockquote>
+                    <p>{{answer.description}}</p>
+                </blockquote>
+                <p>{{answer.description}}</p>
+
+                <p><code>{{answer.description}}</code></p>
+
+                <p>{{answer.description}}</p>
+                <pre>{{answer.description}}</pre>
+            </div>
+        </div>
+    </div>
+    <!-- End of answered list -->
+    <div class="modal-footer" ng-show="managerView">
+        <button class="btn btn-primary" ng-click="close()">Close</button>
+    </div>
+
 </div>
-<!-- End of answered list -->
-<div class="row">
+<div class="row" ng-hide="managerView">
     <div class="col-xs-12 col-sm-9">
-        <from class="form-horizontal">
+        <form class="form-horizontal" name="answerQuestionForm" novalidate>
             <!-- descriptions -->
             <div class="from-group">
-                <label for="questionAnswer" class="col-sm-8 sr-only">Answer descriptions</label>
-
+                <div class="col-xs-8 pull-right input-gap" ng-show="answerQuestionForm.$submitted || answerQuestionForm.answerDescription.$touched">
+                    <div class="label label-danger" ng-show="answerQuestionForm.answerDescription.$error.required">Answer descriptions cannot be empty</div>
+                </div>
+                <label for="answerDescription" class="col-sm-8 sr-only">Answer descriptions</label>
                 <div class="col-sm-12 input-gap">
-                    <textarea class="form-control input-lg" id="questionAnswer" rows="8"
-                              placeholder="Answer this question"
-                              ng-model="desc"></textarea>
+                    <textarea class="form-control input-lg" id="answerDescription" rows="8"
+                              placeholder="Answer this question" required="required"
+                              ng-model="answer.data.description" name="answerDescription"></textarea>
                 </div>
             </div>
             <!-- buttons submit & rest -->
             <div class="from-group">
                 <div class="col-xs-5 col-xs-offset-0 col-sm-3 col-sm-offset-2">
-                    <button class="btn btn-primary btn-lg btn-block" type="button" ng-click="submitAnAnswer()">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit" ng-click="submitAnAnswer(answer,answerQuestionForm,answerQuestionForm.answerDescription)">
                         Submit
                     </button>
                 </div>
                 <div class="col-xs-12 col-sm-1 input-gap"></div>
                 <div class="col-xs-5 col-xs-offset-0 col-sm-3 col-sm-offset-1">
-                    <button class="btn btn-danger btn-lg btn-block" type="reset">Rest</button>
+                    <button class="btn btn-danger btn-lg btn-block" type="reset" ng-click="resetAnswerInfo(answerQuestionForm)">Rest</button>
                 </div>
             </div>
-        </from>
+        </form>
     </div>
 </div>

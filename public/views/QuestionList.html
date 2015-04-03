@@ -1,4 +1,4 @@
-<!-- Question list nav bar -->
+<!-- Start of question list nav bar -->
 <div class="collapse navbar-collapse question-navbar-main">
     <ul class="nav navbar-nav question-navbar-list">
         <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">All Activity</a> </li>
@@ -10,15 +10,6 @@
 <!-- End of question list nav bar -->
 
 
-<div class="row">
-
-    <div class="col-xs-4">
-        <label for="search">Search:</label>
-        <input ng-model="query" id="search" class="form-control" placeholder="Filter text">
-    </div>
-</div>
-
-
 <!-- Question List heading -->
 <div class="page-title">
     <div class="page-header">
@@ -27,9 +18,27 @@
 </div>
 <!-- End of question list heading -->
 
-<!-- Question list -->
+
+<!-- Start of manager settings -->
+<div class="row">
+    <div class="col-xs-12 col-sm-4">
+        <label for="search">Search:</label>
+        <input ng-model="query" id="search" class="form-control" placeholder="Filter text">
+    </div>
+    <div class="col-xs-6">
+        <div class="btn-group">
+            <label class="btn btn-primary" ng-model="viewModel" btn-radio="'customerView'" ng-click="setView('customer')">Customer view</label>
+            <label class="btn btn-primary" ng-model="viewModel" btn-radio="'managerView'" ng-click="setView('manager')">Manager view</label>
+        </div>
+    </div>
+</div>
+<!-- End of manager settings -->
+
+
+<!-- Start of question list with customer view -->
+<div class="customer-view" id="customerView" ng-show="viewModel=='customerView'">
 <div class="list-group q-list">
-    <div class="list-group-item" ia-pagination="question in questions | filter:query | itemsPerPage: pageSize | orderBy:sortField:reverse track by $index" current-page="currentPage" pagination-id="questionListPagination">
+    <div class="list-group-item" ia-pagination="question in questions | filter:query | itemsPerPage: pageSize | orderBy:sortField.name:sortField.reverse track by $index" current-page="currentPage" pagination-id="questionListPaginationCustomerView">
         <div class="media">
             <div class="media-left hidden-xs q-list-item-states">
                 <div class="media-object">
@@ -57,22 +66,43 @@
         </div>
     </div>
 </div>
-<!--<nav>-->
-    <!--<ul class="pagination" ng-show="totalPage>1">-->
-        <!--<li ng-hide="currentPage==1">-->
-            <!--<a href="javascript:void(0);"ng-click="prev()" aria-label="Previous">-->
-                <!--<span aria-hidden="true">&laquo;</span>-->
-            <!--</a>-->
-        <!--</li>-->
-        <!--&lt;!&ndash;<li id="{{page}}" ng-repeat="page in pages" ng-click="pageOnClick(page)"><a href="javascript:void(0);" ng-click="loadPage(page)">{{ page }}</a></li>&ndash;&gt;-->
-        <!--<li id="{{page}}" ng-repeat="page in pages"><a href="javascript:void(0);" ng-click="loadPage(page)">{{ page }}</a></li>-->
-        <!--<li ng-hide="currentPage==totalPage">-->
-            <!--<a href="javascript:void(0);" ng-click="next()" aria-label="Next">-->
-                <!--<span aria-hidden="true">&raquo;</span>-->
-            <!--</a>-->
-        <!--</li>-->
-    <!--</ul>-->
-<!--</nav>-->
+
 <nav class="text-left">
-    <ia-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" pagination-id="questionListPagination"></ia-pagination-controls>
+    <ia-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" pagination-id="questionListPaginationCustomerView"></ia-pagination-controls>
 </nav>
+</div>
+<!-- End of question list with customer view -->
+
+<!-- Start of question list with manager view -->
+<pre>{{operation || 'null'}}</pre>
+<div class="table-responsive manager-view" id="managerView" ng-show="viewModel=='managerView'">
+    <table class="table table-hover table-bordered table-condensed">
+        <tr>
+            <th><a href="javascript:void(0)" ng-click="setSortField('index')">#</a></th>
+            <th><a href="javascript:void(0)" ng-click="setSortField('title')">Title</a></th>
+            <th><a href="javascript:void(0)" ng-click="setSortField('user')">User</a></th>
+            <th><a href="javascript:void(0)" ng-click="setSortField('createDate')">Create date</a></th>
+            <th><a href="javascript:void(0)" ng-click="setSortField('lastAnswerDate')">Last answer date</a></th>
+            <th><a href="javascript:void(0)" ng-click="setSortField('numOfAnswers')"># of answers</a></th>
+            <th>Operations</th>
+        </tr>
+        <tr ia-pagination="fullInfoQuestion in fullInfoQuestions | filter:query | itemsPerPage: pageSize | orderBy:sortField.name:sortField.reverse track by $index" current-page="currentPage" pagination-id="questionListPaginationManagerView">
+            <td>{{$index+1}}</td>
+            <td><a href="#/question/{{fullInfoQuestion._id}}">{{fullInfoQuestion.title}}</a></td>
+            <td><a href="#/user/{{fullInfoQuestion.user._id}}">{{fullInfoQuestion.user.name}}</a></td>
+            <td>{{fullInfoQuestion.question.date}}</td>
+            <td>{{fullInfoQuestion.question.answer.length==0?0:fullInfoQuestion.question.answer[fullInfoQuestion.question.answer.length-1]}}</td>
+            <td>{{fullInfoQuestion.question.answer.length}}</td>
+            <td>
+                <div class="btn-group">
+                    <label class="btn btn-danger btn-sm" ng-model="operation[fullInfoQuestion._id]" btn-radio="'delete'">DELETE</label>
+                    <label class="btn btn-warning btn-sm" ng-model="operation[fullInfoQuestion._id]" btn-radio="'close'">CLOSE</label>
+                    <button class="btn btn-info btn-sm" ng-click="seeDetails(fullInfoQuestion._id)">See Details</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <nav class="text-left">
+        <ia-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" pagination-id="questionListPaginationManagerView"></ia-pagination-controls>
+    </nav>
+</div>
