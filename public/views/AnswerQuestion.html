@@ -1,9 +1,9 @@
 <div class="collapse navbar-collapse question-navbar-main">
-    <ul class="nav navbar-nav question-navbar-list" ng-hide="managerView">
-        <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">All Activity</a></li>
-        <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Questions</a></li>
-        <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Unanswered</a></li>
-        <li class="question-navbar-list-item"><a class="question-navbar-list-item-link" href="#">Tags</a></li>
+    <ul class="nav navbar-nav" ng-hide="managerView">
+        <li><a href="#">All Activity</a></li>
+        <li><a href="#">Questions</a></li>
+        <li><a href="#">Unanswered</a></li>
+        <li><a href="#">Tags</a></li>
     </ul>
 </div>
 <!-- End of question list nav bar -->
@@ -28,16 +28,7 @@
         <!-- End of question votes -->
         <!-- Start of question description -->
         <div class="col-xs-12 question-desc-main" ng-class="{'col-sm-8 ': managerView==false}">
-            <p>{{question.description}}</p>
-            <blockquote>
-                <p>{{question.description}}</p>
-            </blockquote>
-            <p>{{question.description}}</p>
-
-            <p><code>{{question.description}}</code></p>
-
-            <p>{{question.description}}</p>
-            <pre>{{question.description}}</pre>
+            <p ng-bind-html="question.description"></p>
         </div>
         <!-- End of question description -->
         <!-- Start of question tags -->
@@ -58,7 +49,7 @@
     <!-- End of question main body -->
     <!-- Start of answer label -->
     <div class="row">
-        <div class="col-xs-12" ng-class="{'col-sm-9 ': managerView==false}"">
+        <div class="col-xs-12" ng-class="{'col-sm-9 ': managerView==false}">
             <div class="alert alert-info" role="alert">Answers</div>
         </div>
     </div>
@@ -75,16 +66,7 @@
                 <div class="col-xs-3 pull-right">
                     <button class="btn btn-danger btn-block" ng-click="deleteAnswer(answer._id)">Delete</button>
                 </div>
-                <p>{{answer.description}}</p>
-                <blockquote>
-                    <p>{{answer.description}}</p>
-                </blockquote>
-                <p>{{answer.description}}</p>
-
-                <p><code>{{answer.description}}</code></p>
-
-                <p>{{answer.description}}</p>
-                <pre>{{answer.description}}</pre>
+                <p ng-bind-html="answer.description"></p>
             </div>
         </div>
     </div>
@@ -98,29 +80,34 @@
     <div class="col-xs-12 col-sm-9">
         <form class="form-horizontal" name="answerQuestionForm" novalidate>
             <!-- descriptions -->
-            <div class="from-group">
-                <div class="col-xs-8 pull-right input-gap" ng-show="answerQuestionForm.$submitted || answerQuestionForm.answerDescription.$touched">
-                    <div class="label label-danger" ng-show="answerQuestionForm.answerDescription.$error.required">Answer descriptions cannot be empty</div>
+            <div class="from-group input-gap">
+                <div class="col-xs-8 pull-right"
+                     ng-show="answerQuestionForm.$submitted || answerQuestionForm.answerDescription.$touched">
+                    <div class="label label-danger" ng-show="answerQuestionForm.answerDescription.$error.required">
+                        Answer descriptions cannot be empty
+                    </div>
                 </div>
-                <label for="answerDescription" class="col-sm-8 sr-only">Answer descriptions</label>
-                <div class="col-sm-12 input-gap">
-                    <textarea class="form-control input-lg" id="answerDescription" rows="8"
-                              placeholder="Answer this question" required="required"
-                              ng-model="answer.data.description" name="answerDescription"></textarea>
-                </div>
+                <label for="answerDescription">Answer descriptions</label>
+                <div text-angular="text-angular" id="answerDescription" rows="8" name="answerDescription"
+                          placeholder="Answer this question" required="required"
+                          ng-model="answer.data.description"></div>
             </div>
             <!-- buttons submit & rest -->
             <div class="from-group">
                 <div class="col-xs-5 col-xs-offset-0 col-sm-3 col-sm-offset-2">
-                    <button class="btn btn-primary btn-lg btn-block" type="submit" ng-click="submitAnAnswer(answer,answerQuestionForm,answerQuestionForm.answerDescription)">
+                    <button class="btn btn-primary btn-block" type="submit"
+                            ng-click="submitAnAnswer(answer,answerQuestionForm,answerQuestionForm.answerDescription)">
                         Submit
                     </button>
                 </div>
                 <div class="col-xs-12 col-sm-1 input-gap"></div>
                 <div class="col-xs-5 col-xs-offset-0 col-sm-3 col-sm-offset-1">
-                    <button class="btn btn-danger btn-lg btn-block" type="reset" ng-click="resetAnswerInfo(answerQuestionForm)">Rest</button>
+                    <button class="btn btn-danger btn-block" type="reset"
+                            ng-click="resetAnswerInfo(answerQuestionForm)">Reset
+                    </button>
                 </div>
             </div>
         </form>
     </div>
 </div>
+

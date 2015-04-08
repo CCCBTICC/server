@@ -2,15 +2,26 @@
  * Created by lhz on 2015/3/29.
  */
 
-angular.module('answerQuestionController', [])
+angular.module('answerQuestionController', ['textAngular'])
+    .config(function ($provide) {
+        $provide.decorator('taOptions', ['$delegate', function(taOptions){
+            taOptions.toolbar = [
+                ['h1', 'h2', 'h3', 'p', 'pre', 'quote'],
+                ['ul', 'ol', 'redo', 'undo', 'clear'],
+                ['html', 'insertImage', 'insertLink']
+            ];
+            return taOptions;
+        }]);
+    })
     .controller('AnswerQuestionCtrl', ['$scope', '$routeParams', '$location', 'InterviewQuestion', function ($scope, $routeParams, $location, InterviewQuestion) {
         $scope.managerView = false;
         $scope.answer = {};
+        $scope.answer.data = {};
         InterviewQuestion.getQuestionById($routeParams.questionId, function (result) {
             $scope.question = result;
         });
 
-        $scope.submitAnAnswer = function (answerAddInfo, form, answerQuestionFormDesc) {
+        $scope.submitAnAnswer = function (answerAddInfo, answerQuestionForm, answerQuestionFormDesc) {
             if (typeof answerAddInfo.data !== 'undefined' && !answerQuestionFormDesc.$error.required) {
                 answerAddInfo.action = "create";
                 answerAddInfo.data.questionId = $routeParams.questionId;
@@ -19,8 +30,7 @@ angular.module('answerQuestionController', [])
                         InterviewQuestion.getQuestionById($routeParams.questionId, function (result) {
                             $scope.question = result;
                         });
-                        $scope.answer.data.description = "";
-                        $scope.resetAnswerInfo(form);
+                        $scope.resetAnswerInfo(answerQuestionForm);
                     }
                 });
             }
@@ -50,7 +60,7 @@ angular.module('answerQuestionController', [])
                 form.$setPristine();
                 form.$setUntouched();
             }
-            $scope.question = {};
+            $scope.answer = {};
         };
 
 
@@ -58,9 +68,7 @@ angular.module('answerQuestionController', [])
     }])
     .controller('AnswerQuestionCtrlForManagerView', ['$scope', '$modalInstance', 'question', 'InterviewQuestion', function ($scope, $modalInstance, question, InterviewQuestion) {
         $scope.managerView = true;
-        var questionId = question;
-
-        InterviewQuestion.getQuestionById(questionId, function (result) {
+        InterviewQuestion.getQuestionById(question, function (result) {
             $scope.question = result;
         });
 

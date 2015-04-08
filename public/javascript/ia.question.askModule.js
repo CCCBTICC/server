@@ -3,7 +3,17 @@
  */
 var moduleName = "interviewAid.angularUtils.question.askedModule";
 
-angular.module(moduleName, [])
+angular.module(moduleName, ['textAngular'])
+    .config(function ($provide) {
+        $provide.decorator('taOptions', ['$delegate', function(taOptions){
+            taOptions.toolbar = [
+                ['h1', 'h2', 'h3', 'p', 'pre', 'quote'],
+                ['ul', 'ol', 'redo', 'undo', 'clear'],
+                ['html', 'insertImage', 'insertLink']
+            ];
+            return taOptions;
+        }]);
+    })
     .constant('askQuestionConfig', {
         'totalNumOfTags': 5
     })

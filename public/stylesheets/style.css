@@ -31,6 +31,128 @@ a:active, a:focus, a:hover, a {
 /****************************/
 /*        shell page        */
 /****************************/
+
+/* aside tool bar */
+aside {
+    position: fixed;
+    right: 3%;
+    bottom: 90px;
+    text-align: center;
+    z-index: 20000;
+    display: block;
+}
+
+aside ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 140%;
+}
+
+aside ul li {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-bottom: solid 1px #a0a0a0;
+    margin-top: -2px;
+}
+
+aside ul div {
+    position: relative;
+    right: auto;
+    width: 230px;
+    height: auto;
+}
+
+aside ul .wechat-qr-code div {
+    color: rgba(255, 255, 255, 0);
+    height: 230px;
+    background: rgba(239, 239, 239, 0.70) url("../images/QRCode.jpg") no-repeat center center;
+    background-size: 85% 85%;
+}
+
+aside ul .likeUs div {
+
+}
+
+/* Ghost button */
+aside ul li label.button {
+    border: 2px solid rgba(107, 107, 107, 0.80);
+    position: relative;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    -ms-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+
+.button:hover {
+    border: 2px solid rgba(107, 107, 107, 1);
+}
+
+.button .line {
+    display: block;
+    position: absolute;
+    background: none;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    -ms-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+
+.button:hover .line {
+    background-color: rgba(107, 107, 107, 1);
+}
+
+.button .line-top {
+    height: 2px;
+    width: 0;
+    left: -75%;
+    top: -2px;
+}
+
+.button:hover .line-top {
+    width: 100%;
+    left: -2px;
+}
+
+.button .line-bottom {
+    width: 0;
+    height: 2px;
+    right: -75%;
+    bottom: -2px;
+}
+
+.button:hover .line-bottom {
+    width: 100%;
+    right: -2px;
+}
+
+.button .line-left {
+    width: 2px;
+    height: 0;
+    left: -2px;
+    bottom: -110%
+}
+
+.button:hover .line-left {
+    height: 100%;
+    bottom: -2px;
+}
+
+.button .line-right {
+    width: 2px;
+    height: 0;
+    right: -2px;
+    top: -110%
+}
+
+.button:hover .line-right {
+    height: 100%;
+    top: -2px;
+}
+
 /* nav bar */
 .navbar-extra {
     border-radius: 0;
@@ -71,10 +193,9 @@ a:active, a:focus, a:hover, a {
 /****************************/
 /*    list question page    */
 /****************************/
-iframe {
-    width: auto;
-    height: 100%;
-}
+
+/* Question list */
+
 .q-list .list-group-item {
     height: 102px;
 }
@@ -82,6 +203,7 @@ iframe {
 .ng-view-container {
     text-align: left;
     display: block;
+    padding-right: 60px;
 }
 
 /* nav bar */
@@ -94,7 +216,7 @@ iframe {
     display: block;
 }
 
-.question-navbar-list {
+.question-navbar-main ul {
     width: 100%;
     margin: 0;
     padding: 0;
@@ -105,12 +227,12 @@ iframe {
     display: block;
 }
 
-.question-navbar-list-item {
+.question-navbar-main ul li {
     display: block;
     margin: 0;
 }
 
-.question-navbar-list-item-link {
+.question-navbar-main ul li a {
     color: #666 !important;
     display: block;
     font-weight: 700;
@@ -120,7 +242,7 @@ iframe {
     transition: all ease-in-out 0.5s;
 }
 
-.question-navbar-list-item-link:hover {
+.question-navbar-main ul li a:hover {
     text-decoration: none;
     color: #069 !important;
     transition: all 0.2s ease-in-out 0s;

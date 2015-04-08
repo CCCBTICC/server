@@ -59,3 +59,22 @@ app.controller('DOMPositionCtrl', function ($scope, $location, $anchorScroll) {
         $anchorScroll();
     };
 });
+
+app.directive("goToTop", function ($window) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            angular.element($window).bind("scroll", function () {
+                if (this.pageYOffset >= 70) {
+                    scope.visible = true;
+                } else {
+                    scope.visible = false;
+                }
+                scope.$apply();
+            });
+            element.on('click', function () {
+                $("body, html").stop(true, true).animate({scrollTop: $("#topPosition").offset().top}, "slow");
+            });
+        }
+    }
+});

@@ -18,9 +18,9 @@
             <div class="label label-danger" ng-show="askQuestionForm.questionDesc.$error.required">Question descriptions cannot be empty</div>
         </div>
         <label for="questionDesc">Question descriptions</label>
-        <textarea class="form-control" id="questionDesc" rows="8" name="questionDesc"
+        <div text-angular="text-angular" id="questionDesc" rows="8" name="questionDesc"
                   placeholder="Describe your question" required="required"
-                  ng-model="question.data.description"></textarea>
+                  ng-model="question.data.description"></div>
     </div>
     <!-- tags -->
     <div class="from-group input-gap">
@@ -47,7 +47,7 @@
         </div>
         <div class="col-xs-12 col-sm-1 input-gap"></div>
         <div class="col-xs-5 col-xs-offset-0 col-sm-3 col-sm-offset-1">
-            <button class="btn btn-danger btn-block" type="reset" ng-click="resetQuestionInfo(askQuestionForm)">Rest
+            <button class="btn btn-danger btn-block" type="reset" ng-click="resetQuestionInfo(askQuestionForm)">Reset
             </button>
         </div>
     </div>

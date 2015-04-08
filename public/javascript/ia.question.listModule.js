@@ -72,21 +72,3 @@ angular.module(moduleName, ['interviewAid.angularUtils.pagination', 'answerQuest
             });
         };
     }]);
-
-//
-//angular.module("template/Modal/iaQuestionListManagerViewModal.html", []).run(["$templateCache", function ($templateCache) {
-//    $templateCache.put("template/Modal/iaQuestionListManagerViewModal.html",
-//        "<div class=\"modal-header\">\n" +
-//        "   <button type=\"button\" class=\"close\" ng-click=\"close()\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
-//        "   <h4 class=\"modal-title\" id=\"myModalLabel\">Detail</h4>\n" +
-//        "</div>\n" +
-//        "   <div class=\"modal-body\">\n" +
-//        "       <div class=\"container\">\n" +
-//        "           <iframe src=\"../views/AnswerQuestion.html\"></iframe>\n" +
-//        "       </div>\n" +
-//        "   </div>\n" +
-//        "<div class=\"modal-footer\">\n" +
-//        "   <button class=\"btn btn-primary\" ng-click=\"close()\">Close</button>\n" +
-//        "</div>\n"
-//    );
-//}]);
