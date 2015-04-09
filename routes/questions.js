@@ -24,7 +24,7 @@ router.get('/', function (req, res, next) {
         req.db.collection('answers').find({_id: {$in: question.answers}}, {
             _id: 1,
             description: 1,
-            comments:1
+            comments: 1
         }, function (e, answers) {
             question.answers = answers;
             console.log(JSON.stringify(question));
@@ -61,19 +61,31 @@ function createQuestion(req, res, data) {
 }
 
 function removeQuestion(req, res, data) {
-    req.db.collection('questions').findOne({_id: mongojs.ObjectId(data._id)},{answers:1},function(err,question){
-        if(question!==null) {
-            req.db.collection('answers').remove({_id: {$in: question.answers}});
-        }
-
-        req.db.collection('questions').remove({_id: mongojs.ObjectId(data._id)}, function (err) {
-            if (err == null) {
-                res.status(200);
-            } else {
-                res.status(400);
+    req.db.collection('questions').findOne({_id: mongojs.ObjectId(data._id)}, {answers: 1}, function (err, question) {
+        if (question !== null) {
+            var NumberOfRemovedAnswers = 0;
+            var NumberOfAnswers = question.answers.length;
+            for (i in question.answers) {
+                req.db.collection('answers').findOne({_id: question.answers[i]}, {comments: 1}, function (err, answer) {
+                    if (answer !== null) {
+                        req.db.collection('comments').remove({_id: {$in: answer.comments}});
+                    }
+                    NumberOfRemovedAnswers++;
+                    if (NumberOfRemovedAnswers === NumberOfAnswers) {
+                        req.db.collection('answers').remove({_id: {$in: question.answers}}, function (err) {
+                            req.db.collection('questions').remove({_id: mongojs.ObjectId(data._id)}, function (err) {
+                                if (err == null) {
+                                    res.status(200);
+                                } else {
+                                    res.status(400);
+                                }
+                                res.send();
+                            });
+                        });
+                    }
+                });
             }
-            res.send();
-        });
+        }
     });
 }
 
